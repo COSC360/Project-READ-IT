@@ -4,8 +4,6 @@
 
 Luca Deverteuil and Fareeha Hayat
 
-<br>
-
 ## Project Description
 
 Our team will undertake the MyDiscussionForum project, a forum-style website intended to facilitate online user discussions. The discussions can be of any topic of the user’s choosing and depend on other user's participation.
@@ -15,8 +13,6 @@ Registered users will be allowed to create discussion posts of any topic, and re
 The inspiration of the project will be Reddit and similar online discussion forums. There will also be page for each dedicated user type.
 
 ---
-
-<br>
 
 ## Requirements List
 
