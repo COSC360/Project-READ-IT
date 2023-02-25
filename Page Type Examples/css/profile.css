@@ -1,0 +1,230 @@
+
+* {
+    font-family: Verdana, Arial, sans-serif;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    overflow: auto;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    height: 5em;
+    line-height: 5em;
+    background-color: #472183;
+    color: white;
+}
+
+header h1 {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    left: 0;
+    width: 5em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, sans-serif;
+    font-size: 48px;
+}
+
+footer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 2em;
+    line-height: 2em;
+    margin: 1em 0 0 0;
+    text-align: center;
+    background-color: #472183;
+    color: white;
+}
+
+#user-profile-image {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    float: right;
+    width: 3em;
+    height: 3em;
+    right: 0;
+    margin: 1em 2em 0 0;
+    border-radius: 50%;
+    background-color: #F1F6F5;
+}
+
+#main {
+    height: min-content;
+    margin-top: 1em;
+}
+
+#post {
+    display: block;
+    position: relative;
+    float: left;
+    margin-left: 8.5em;
+    margin-bottom: 1em;
+    width: 55.5%;
+}
+
+
+.post-content img:hover {
+    cursor: pointer;
+}
+
+#poster-info {
+    display: block;
+    float: right;
+    width: 23em;
+    height: 100%;
+    margin: 0 2.5em 5em 0;
+    padding: 1em 1em 1em 1em;
+    border: 1px solid #4B56D2;
+    border-radius: 0.75em;
+    background-color: #F1F6F5;
+}
+
+#poster-profile {
+    display: block;
+    position: relative;
+    padding: 1em;
+    border-bottom: 1px solid black;
+}
+
+#poster-profile-image {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    background-color: #4B56D2;
+}
+
+#poster-username {
+    display: block;
+    position: relative;
+    float: right;
+    margin: 2em 7.5em 0 0;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+#poster-username:hover {
+    text-decoration: underline;
+}
+
+#poster-description {
+    display: block;
+    position: relative;
+    height: 100%;
+    margin: 1em 0 1em 0;
+    border-bottom: 1px solid black;
+}
+
+
+#Posts-By-User {
+    display: block;
+    position: relative;
+    /* height: max-content; */
+    background-color: #82C3EC;
+}
+
+
+
+#comment-profile-image {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    float: left;
+    width: 3em;
+    height: 3em;
+    margin-bottom: 1em;
+    border-radius: 50%;
+    background-color: #F1F6F5;
+}
+
+
+
+.PostDatabase{
+    background-color: #82C3EC;
+    border:solid 1px #82C3EC;
+    height: 73vh; 
+    width: 100%;
+    overflow: scroll;
+}
+
+.Post-Information{
+    border: 1px solid black;
+    border-left: 0px solid;
+    border-right: 0px solid;
+    border-top: 0px solid;
+    width:100%;
+}
+
+.Post-Title-Database{
+    display: flex;
+    float: left;
+    font-size: larger;
+    margin: 0.3em;
+}
+
+.Post-Text-Database{
+    display: inline;
+    font-size: medium;
+    margin: 0.3em;
+
+}
+
+.Post-Date_Dataabse{
+    display: inline-flex;
+    float: right;
+    font-size: smaller;
+}
+
+.InternalNav{
+    margin-bottom: 1em;
+}
+
+.navbar{
+    background-color: #82C3EC !important;
+}
+
+.btn{
+    background-color: #472183;
+    color:white !important;
+    border-color: #472183 !important;
+}
+
+.btn-outline-light:hover{
+    background-color: #472183;
+    color:white !important;
+    border-color: #472183;
+}
+
+#updateProfile{
+    display:flex;
+    margin-top: 0.5em;
+    float:right;
+}
+#Account-Created{
+display: block;
+}
+
+.New-Post{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Newpost{
+    width:10em; 
+}
+
