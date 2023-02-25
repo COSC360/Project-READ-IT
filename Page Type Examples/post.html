@@ -26,7 +26,9 @@
                 <div class="post-container"> <!-- example post -->
                     <article class="post-content">
                         <h3>Post Title</h3>
-                        <img src="images/166.jpg">
+                        <a href="#">
+                            <img src="images/166.jpg">
+                        </a>
                         orem ipsum dolor sit amet, consectetur adipiscing elit. Nam at velit nec nisl feugiat convallis id at neque. Maecenas convallis eleifend nisl, at ultricies tellus bibendum ac. Morbi in eros efficitur, efficitur sapien a, egestas mauris
                     </article>
                 </div>
@@ -34,23 +36,36 @@
                 <div id="comment-section">
                     <div id="add-comment">
                         <form id="post-comment">
-                            <input type="text" placeholder="Add a comment...">
+                            <textarea placeholder="Add a comment..."></textarea>
                             <input type="submit" value="Post">
                         </form>
                     </div>
 
                     <div id="comments">
-                        <div id="comment-profile-image">
-                            
+                        <div class="comment">
+                            <div id="comment-profile-image">
+                                <a href="#"> <!-- link to commenter's profile page -->
+                                    <img src=""> <!-- add commenter's profile image -->
+                                </a>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. CurLorem ipsum dolor sit amet, consectetur adipiscing elit. CurLorem ipsum dolor sit amet, consectetur adipiscing elit. CurLorem ipsum dolor sit amet, consectetur adipiscing elit. Cur</p>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. CurLorem ipsum dolor sit amet, consectetur adipiscing elit. CurLorem ipsum dolor sit amet, consectetur adipiscing elit. CurLorem ipsum dolor sit amet, consectetur adipiscing elit. Cur</p>
+
+                        <div class="comment">
+                            <div id="comment-profile-image">
+                                <a href="#"> <!-- link to commenter's profile page -->
+                                    <img src=""> <!-- add commenter's profile image -->
+                                </a>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div id="poster-info">
                 <div class="post-profile-image">
-                    <a href="#"> <!-- link to profile page -->
+                    <a href="#"> <!-- link to poster's profile page -->
                         <img src=""> <!-- add profile picture of poster -->
                     </a>
                 </div>

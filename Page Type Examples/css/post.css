@@ -69,15 +69,13 @@ footer {
     display: block;
     position: relative;
     float: left;
-    margin-left: 2.5em;
-    width: 0; /* check why need this */
+    margin-left: 8.5em;
+    width: 55.5%;
 }
 
 .post-container {
-    display: block;
+    display: inline-block;
     position: relative;
-    float: left;
-    width: 42.5em;
     height: max-content;
     margin-bottom: 1em;
     text-align: unset;
@@ -137,11 +135,10 @@ footer {
 }
 
 #comment-section {
-    display: block;
+    display: inline-block;
     position: relative;
-    float: left;
-    width: 52.5em;
-    height: max-content;
+    /* height: max-content; */
+    margin-bottom: 1em;
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
     background-color: #82C3EC;
@@ -149,10 +146,11 @@ footer {
 
 
 #add-comment {
-    display: block;
+    display: inline-block;
     position: relative;
-    height: 8em;
-    margin: 1em;
+    width: -webkit-fill-available;
+    margin: 1.5em 1.5em 0 1.5em;
+    box-sizing: border-box;
     background-color: white;
 }
 
@@ -160,30 +158,46 @@ footer {
     padding: 0.5em;
 }
 
-#post-comment input[type="text"] {
-    display: block;
+#post-comment textarea {
+    display: inline-block;
     position: relative;
-    width: 58em;
-    height: 5em;
+    width: 100%;
+    height: 7em;
+    padding: 1em;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 0.75em;
+    resize: none;
 }
 
 #post-comment input[type="submit"] {
+    cursor: pointer;
+    display: block;
+    position: relative;
     float: right;
-    margin: 1em;
+    width: 10em;
+    height: 2em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 0.5em;
+    background-color: #472183;
+    color: white;
 }
 
 #comments {
     display: block;
     position: relative;
     height: max-content;
-    margin: 1em;
+    margin: 1.5em;
     padding: 1em;
     background-color: white;
 }
 
-#comments p {
-    border: 1px solid black;
-    border-radius: 0.75em;
+.comment {
+    min-height: 3em;
+    margin: 1em 0 1em 0;
 }
 
 #comment-profile-image {
@@ -193,6 +207,13 @@ footer {
     float: left;
     width: 3em;
     height: 3em;
+    margin-right: 1em;
     border-radius: 50%;
     background-color: #F1F6F5;
+}
+
+.comment p {
+    float: right;
+    border: 1px solid black;
+    border-radius: 0.75em;
 }
