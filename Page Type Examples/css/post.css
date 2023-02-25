@@ -65,11 +65,12 @@ footer {
     margin-top: 1em;
 }
 
-#posts {
+#post {
     display: block;
     position: relative;
     float: left;
     margin-left: 8.5em;
+    margin-bottom: 5em;
     width: 55.5%;
 }
 
@@ -117,16 +118,23 @@ footer {
     float: right;
     width: 23em;
     height: 20em;
-    margin: 0 2.5em 0 0;
-    padding: 1em 1em 2em 1em;
+    margin: 0 2.5em 5em 0;
+    padding: 1em 1em 1em 1em;
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
     background-color: #82C3EC;
 }
 
-.post-profile-image {
-    cursor: pointer;
+#poster-profile {
     display: block;
+    position: relative;
+    padding: 1em;
+    border-bottom: 1px solid black;
+}
+
+#poster-profile-image {
+    cursor: pointer;
+    display: inline-block;
     position: relative;
     width: 5em;
     height: 5em;
@@ -134,16 +142,41 @@ footer {
     background-color: #F1F6F5;
 }
 
+#poster-username {
+    display: block;
+    position: relative;
+    float: right;
+    margin: 2em 7.5em 0 0;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+#poster-username:hover {
+    text-decoration: underline;
+}
+
+#poster-description {
+    display: block;
+    position: relative;
+    height: 7.5em;
+    margin: 1em 0 1em 0;
+    border-bottom: 1px solid black;
+}
+
+#account-created {
+    display: block;
+    position: relative;
+    font-weight: 500;
+}
+
 #comment-section {
     display: inline-block;
     position: relative;
     /* height: max-content; */
-    margin-bottom: 1em;
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
     background-color: #82C3EC;
 }
-
 
 #add-comment {
     display: inline-block;
@@ -186,18 +219,22 @@ footer {
     color: white;
 }
 
+#post-comment input[type="submit"]:hover {
+    background-color: #391672;
+}
+
 #comments {
     display: block;
     position: relative;
-    height: max-content;
     margin: 1.5em;
-    padding: 1em;
     background-color: white;
 }
 
 .comment {
-    min-height: 3em;
-    margin: 1em 0 1em 0;
+    display: inline-block;
+    position: relative;
+    /* min-height: 3em; */
+    margin: 1em 0 1em 1em;
 }
 
 #comment-profile-image {
@@ -207,13 +244,30 @@ footer {
     float: left;
     width: 3em;
     height: 3em;
-    margin-right: 1em;
+    margin-bottom: 1em;
     border-radius: 50%;
     background-color: #F1F6F5;
 }
 
+#vertical-line { /* need to fix height */
+    display: block;
+    position: relative;
+    clear: left;
+    float: left;
+    height: 100%;
+    min-height: 1em;
+    margin-left: 1.5em;
+    border-left: 1px solid black;
+}
+
 .comment p {
+    display: block;
+    position: relative;
     float: right;
+    width: 37em;
+    margin: 2em 1em 0 1em;
+    padding: 1em;
+    box-sizing: border-box;
     border: 1px solid black;
     border-radius: 0.75em;
 }
