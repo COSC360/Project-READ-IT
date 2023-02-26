@@ -1,0 +1,54 @@
+.navbar-nav {
+margin-left: auto;
+}
+
+.navbar{
+    background-color: #F1F6F5;
+}
+.nav-item  :hover {
+    color: #472183 !important;
+}
+
+.column-left{
+    margin-top: 3em;
+    margin-left: 5em;
+    width: 30%;
+    float: left; 
+}
+
+.column-right{
+    margin-top: 3em;
+    margin-left: 5em;
+    width: 50%;
+    float: left; 
+}
+
+.disabled{
+    background-color: #472183 !important;
+    border-color: #472183 !important;
+    color: white !important;
+}
+
+#title-groups{
+    font-size: 20px;
+}
+
+body{
+    background-color: #82C3EC;
+}
+
+#sublist{
+    padding: 1em;
+    font-size: larger;
+}
+#Banned-Users-List{
+    height: 40vh;
+    overflow: scroll;
+}
+.list-group ul{
+    list-style-type: none; 
+}
+.btn-danger{
+float: right;
+width: 7em;
+}
