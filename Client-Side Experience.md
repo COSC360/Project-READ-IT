@@ -78,6 +78,6 @@ Users can access the login, sign up, discussion post, and user profile pages fro
 
 [Discussion Post](/Page%20Type%20Examples/post.html)
 
-[User Profile](/Page%20Type%20Examples/profil.html)
+[User Profile](/Page%20Type%20Examples/profile.html)
 
 [Admin](/Page%20Type%20Examples/Admin.html)
