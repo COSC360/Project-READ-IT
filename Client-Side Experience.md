@@ -1,5 +1,17 @@
 
 # Client-Side Experience
+## Design
+Read-IT is a reddit clone and we wanted it to be similary to the original design because we think it is easy for users to understand what is happining. We have the header at the top which displays the title of the account. We also have the user profil in the top left hadn corner so the user can access their profile. We have all seen that layout on many other websites like facebook and even github. our body of the page includes a two div layout. on the right side is a task abr. Where users will be able to see their profile or create a post. the middle/left is where all the information of the page will be. Reddit also does a similar layout and we wanted to make it easy yo understand just like how they did. The color comes from colorhunt and we thought it was a friendly layout. 
+
+## Logical process 
+As states before we wanted a layout similar to something users have seen before so it would be easy to undertsand. We want the users of the page to be able to easily view comment and ready posts from random users. 
+These processes incude: 
+1. login: User will sign into their accounts to be able to post and add comments to posts 
+2. signup: if a user isnt signed up they will easily be able to do that  
+3. Go to profile page: To go to profile page the user will click at the top right side of the nav bar where their profile image is. 
+4. View their own posts/threads: A user im their home page will be able to customize their profile picture add a comment about themelves and view old posts of theirs 
+5. view others posts/threads: to view other peoples posts they would got to the home page to see all the posts. they then will be able to interact with the posts that catch their interest
+6. Ban Users (ADMIN): if someone is an admin they will be able to ban users from the READ-IT website bye entering their profile name and the reason they got banned.Admin's have special authority on the website.   
 
 ## Layout
 
