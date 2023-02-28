@@ -35,4 +35,34 @@ Users can access the login, sign up, discussion post, and user profile pages fro
 
 ## Logic Process
 
+## Client-Side Validation
+
+- Login credentials must not have invalid characters
+- Login credentials must not exceed max length
+- Login password must be password field type
+- Login only submits when both username and password fields are entered
+- Website field must contain https
+- Posting a Discussion Post only submits when title and content fields are entered
+- Discussion post file upload must be of valid type (image and video)
+- Discussion post file upload must be within a specific size
+- Posting a comment only submits when comment field is entered
+- Profile description, thread titles, thread content, and comments must not exceed max length
+- User profile picture upload must be of valid image type
+- User profile image upload must be within a specific size
+- Admin user ban must match existing username
+- Admin user ban reason field must be entered
+- Admin user ban must validate if user is already banned
+
 ## Example Pages
+
+[Dashboard](/Page%20Type%20Examples/index.html)
+
+[Sign Up](/Page%20Type%20Examples/signUp.html)
+
+[Login](/Page%20Type%20Examples/Login.html)
+
+[Discussion Post](/Page%20Type%20Examples/post.html)
+
+[User Profile](/Page%20Type%20Examples/profil.html)
+
+[Admin](/Page%20Type%20Examples/Admin.html)
