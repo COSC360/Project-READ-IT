@@ -159,7 +159,6 @@ textarea {
  input[type="file"] {
     float: left;
     margin-top: 1em;
-
     /* cursor: pointer;
     display: block;
     position: relative;
@@ -178,4 +177,3 @@ textarea {
     float: right;
     margin-top: 1em;
  }
- 

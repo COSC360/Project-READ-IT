@@ -1,10 +1,10 @@
 <?php 
 
 $host = "localhost";
-$username = "";
+$username = "root";
 $password = "";
 $database = "project-read-it";
 
-// $connection = new mysqli($host, $username, $password, $database);
+$connection = new mysqli($host, $username, $password, $database);
 
 ?>
