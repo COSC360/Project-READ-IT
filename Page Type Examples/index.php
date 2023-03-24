@@ -8,6 +8,9 @@
     <title>READ-IT - Dashboard</title>
 
     <link rel="stylesheet" href="css/index.css">
+    <?php 
+        include "connection.php";
+    ?>
   </head>
 
   <body>
@@ -17,7 +20,7 @@
             <input id="search" type="text" placeholder="Search READ-IT...">
             
             <div id="user-profile-image">
-                <a href="profile.html"> <!-- link to user profile page -->
+                <a href="profile.php"> <!-- link to user profile page -->
                     <img src=""> <!-- add user profile picture when logged in -->
                 </a>
             </div>
@@ -36,7 +39,9 @@
                 
                 <div id="create-post">
                     <p>Post</p>
-                    <input type="button" id="create-post-button" value="Post a Thread">
+                    <a href="createThread.php">
+                        <input type="button" id="create-post-button" value="Post a Thread">
+                    </a>
                 </div>
             </nav>
 
