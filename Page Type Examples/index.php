@@ -9,7 +9,26 @@
 
     <link rel="stylesheet" href="css/index.css">
     <?php 
+        session_start();
         include "connection.php";
+        global $connection;
+
+        if(isset($_SESSION["username"])) {
+            $username = $_SESSION["username"];
+            $sql = "SELECT username FROM users WHERE username = ?";
+            $statement = mysqli_prepare($connection, $sql);
+            $statement -> bind_param("s", $username);
+            $statement -> execute();
+            $result = $statement -> get_result();
+            if($row = $result -> fetch_assoc()){
+                // echo "User already logged in!";
+                // header("Refresh: 5; URL = index.php");
+            }
+        } else {
+            // echo "<p>HELLO GUEST</p>";
+        }
+
+
     ?>
   </head>
 
@@ -18,12 +37,26 @@
             <h1>READ-IT</h1>
 
             <input id="search" type="text" placeholder="Search READ-IT...">
-            
-            <div id="user-profile-image">
-                <a href="profile.php"> <!-- link to user profile page -->
-                    <img src=""> <!-- add user profile picture when logged in -->
-                </a>
-            </div>
+
+            <?php
+            if(isset($_SESSION["username"])) {
+                echo "<div id='logout'><a href='logout.php'>Logout</a></div><div id='user-profile-image'><a href='profile.php'>";
+                    // $username = $_SESSION["username"];
+                    // $sql = "SELECT picture FROM users WHERE username = ?";
+                    //     $statement = mysqli_prepare($connection, $sql);
+                    //     $statement -> bind_param("s", $username);
+                    //     $statement -> execute();
+                    //     $result = $statement -> get_result();
+                    //     if($row = $result -> fetch_assoc()){
+                    //         echo "<img src='" . $row["picture"] . "'>";
+                    //     }
+                    // } else {
+                    //     echo "<img src=''>";
+                echo "</a></div>";                        
+            } else {
+                echo "<div id='login'><a href='Login.php'>Login</a></div><div id='signup'><a href='signUp.php'>Sign Up</a></div>"; 
+            }
+            ?>
         </header>
 
         <div id="main">

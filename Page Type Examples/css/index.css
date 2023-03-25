@@ -93,6 +93,33 @@ footer {
     border-radius: 50%;
 }
 
+#signup {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 10em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#login {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 5em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#logout {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 5em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #main {
     height: min-content;
     margin-top: 1em;
