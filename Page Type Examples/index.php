@@ -6,29 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>READ-IT - Dashboard</title>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
     <?php 
         include "connection.php";
-        include "dp.php"
+        include "dp.php"; 
+        include "session.php";
     ?>
   </head>
+
 
   <body>
         <header id="masthead">
             <h1>READ-IT</h1>
 
             <input id="search" type="text" placeholder="Search READ-IT...">
-            
+            <?php
+
+            if(isset($_SESSION['username'])){
+             ?>
             <div id="user-profile-image">
                 <a href="profile.php"> <!-- link to user profile page -->
-                    <img src=""> <!-- add user profile picture when logged in -->
+                    <img src= $_SESSION['image']> <!-- add user profile picture when logged in -->
                 </a>
             </div>
+
+            <?php
+            }
+             ?>
+
+            <?php
+            if(!isset($_SESSION['username'])){
+             ?>
+            <div id="login-button">
+                <a href="login.php"> 
+                    <p>Login</p>
+                </a>
+            </div>
+
+            <?php
+            }
+             ?>
+
         </header>
 
         <div id="main">
-            <nav id="right-sidebar"> <!-- recently viewed posts and create post button -->
+
+        <?php
+            if(isset($_SESSION['username'])){
+             ?>
+            <nav id="right-sidebar-loggedIn"> <!-- recently viewed posts and create post button -->
                 <div id="recent-posts">
                     <p>Recent</p>
                     <ul>
@@ -40,22 +67,52 @@
                 
                 <div id="create-post">
                     <p>Post</p>
-                    <a href="createThread.php">
-                        <input type="button" id="create-post-button" value="Post a Thread">
-                    </a>
+                    <button id = "create-post-button"class="btn btn-primary btn-lg" type="button" onclick= "window.location.href='createThread.php'" >Create Thread</button>   
                 </div>
             </nav>
+             <?php
+            }
+             ?>
+            <?php
+            if(!isset($_SESSION['username'])){
+             ?>
+                <nav id="right-sidebar-loggedOut"> 
+                <div id="recent-posts">
+                    <p>If you sign in you can:</p>
+                    <ul>
+                        <li>Create a Post</li>
+                        <li>Comment On Posts</li>
+                        <li>Customize Your Profile</li>
+                    </ul>
+                </div>
+                
+                 <div id="create-post">
+                    <p>Post</p>
+                    <button id = "create-post-button"class="btn btn-primary btn-lg"  disabled>Create Thread</button>
+                </div> 
+            </nav>
+             <?php
+            }
+             ?>
 
-            <div id="posts"> <!-- main dashboard content -->
-                <select name="sort" id="sort">
+
+           <div id="posts"> 
+
+           
+
+           
+           
+           
+           <!-- main dashboard content -->
+                <!-- <select name="sort" id="sort">
                     <option value="recent">Most Recent</option>
                     <option value="popular">Most Popular</option>
                 </select>
             
-                <div class="post-container"> <!-- example post -->
+                <div class="post-container"> 
                     <div class="post-profile-image">
-                        <a href="#"> <!-- link to profile page -->
-                            <img src=""> <!-- add profile picture of poster -->
+                        <a href="#"> // link to user profile page
+                            <img src=""> 
                         </a>
                     </div>
 
@@ -66,7 +123,7 @@
                     </article>
                 </div>
 
-                <div class="post-container"> <!-- another example post -->
+                <div class="post-container"> 
                     <div class="post-profile-image">
                         <a href="#">
                             <img src="">
@@ -79,7 +136,7 @@
                         <img src="images/166.jpg">
                         orem ipsum dolor sit amet, consectetur adipiscing elit. Nam at velit nec nisl feugiat convallis id at neque. Maecenas convallis eleifend nisl, at ultricies tellus bibendum ac. Morbi in eros efficitur, efficitur sapien a, egestas mauris
                     </article>
-                </div>
+                </div> -->
             </div>
         </div>
 
