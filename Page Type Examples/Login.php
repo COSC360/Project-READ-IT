@@ -25,7 +25,7 @@
             $result = $statement -> get_result();
             if($row = $result -> fetch_assoc()){
                 echo "User already logged in!";
-                header("Refresh: 5; URL = index.php");
+                header("Refresh: 0; URL = index.php");
             }
         } else {
             // echo "<p>HELLO GUEST</p>";
@@ -49,10 +49,10 @@
                 if($row = $result -> fetch_assoc()){
                     echo "<p>" . $row["username"] . " successfully logged in</p>";
                     $_SESSION["username"] = $row["username"];
-                    header("Refresh: 3; URL = index.php");
+                    header("Refresh: 2; URL = index.php");
                 } else {
                     echo "<p>Invalid username and/or password</p>";
-                    header("Refresh: 3; URL = Login.php");
+                    header("Refresh: 2; URL = Login.php");
                 }
             }
             mysqli_close($connection);
@@ -68,7 +68,7 @@
 </head>
 <body>
     <div id="breadcrumb">
-        <a href="index.php">Home</a>-> <span style="text-decoration: underline;">Login</span>
+        <a href="index.php">Home</a> -> <span style="text-decoration: underline;">Login</span>
     </div>
 
     <div id = "SignUpBody">

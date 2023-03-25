@@ -35,6 +35,14 @@ header h1 {
     font-size: 48px;
 }
 
+header a:-webkit-any-link {
+    text-decoration: none !important;
+    display: block;
+    font-family: Arial, sans-serif;
+    color: white;
+    cursor: pointer;
+}
+
 footer {
     position: relative;
     overflow: hidden;
@@ -97,7 +105,7 @@ footer {
     cursor: pointer;
     display: block;
     position: absolute;
-    right: 10em;
+    right: 7.5em;
     margin-left: auto;
     margin-right: auto;
 }
@@ -106,7 +114,7 @@ footer {
     cursor: pointer;
     display: block;
     position: absolute;
-    right: 5em;
+    right: 3em;
     margin-left: auto;
     margin-right: auto;
 }
@@ -115,7 +123,7 @@ footer {
     cursor: pointer;
     display: block;
     position: absolute;
-    right: 5em;
+    right: 7em;
     margin-left: auto;
     margin-right: auto;
 }
@@ -179,6 +187,14 @@ footer {
     margin: 1em 0 0 1em;
     padding-bottom: 1em;
     /* font-weight: 500; */
+}
+
+#create-post a:-webkit-any-link {
+    text-decoration: none !important;
+    display: block;
+    font-family: Arial, sans-serif;
+    color: white;
+    cursor: pointer;
 }
 
 #create-post-button {

@@ -35,6 +35,14 @@ header h1 {
     font-size: 48px;
 }
 
+header a:-webkit-any-link {
+    text-decoration: none !important;
+    display: block;
+    font-family: Arial, sans-serif;
+    color: white;
+    cursor: pointer;
+}
+
 footer {
     position: relative;
     overflow: hidden;
@@ -93,9 +101,45 @@ footer {
     border-radius: 50%;
 }
 
+#signup {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 7.5em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#login {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 3em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#logout {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 3em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #main {
     height: min-content;
     margin-top: 1em;
+}
+
+#new-thread-title {
+    display: block;
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    color: #472183;
+    font-weight: bold;
 }
 
 #sort {
@@ -156,24 +200,27 @@ textarea {
     border: none;
  }
 
- input[type="file"] {
-    float: left;
-    margin-top: 1em;
-    /* cursor: pointer;
-    display: block;
-    position: relative;
-    width: 12.5em;
-    height: 4em;
-    margin-top: 1em;
-    margin-right: auto;
-    margin-left: auto;
+ ::-webkit-file-upload-button {
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    margin-top: 1.5em;
+    margin-right: 0.5em;
     border: none;
-    border-radius: 0.75em;
+    border-radius: 6px;
     background-color: #472183;
-    color: white; */
+    color: white;
  }
-
+ 
  input[type="submit"] {
     float: right;
-    margin-top: 1em;
+    margin-top: 1.5em;
+    background-color: #472183;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
  }
