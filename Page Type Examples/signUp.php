@@ -16,8 +16,8 @@
 
         <?php
             // session_start();
-            // include "connection.php";
-            include "db.php";
+            include "connection.php";
+            // include "db.php";
             $error_message ;
 
             if(isset($_POST['signup'])) {
@@ -37,7 +37,7 @@
 
                 if($isValid){
                 $sqlchecker = "SELECT * FROM users;";
-                $checker = mysqli_query($conn, $sqlchecker);		// get results of the query
+                $checker = mysqli_query($connection, $sqlchecker);		// get results of the query
                 while ($row = mysqli_fetch_assoc($checker)){
                     if($row['Username'] === $name ){ // check to see if user already exists
                         $isValid = false;
@@ -46,13 +46,13 @@
             }
             }
                 if($isValid){
-                $sql = "INSERT INTO Users (Username, Password, DateSignedup, image) VALUES ('$name', '$password','$date', '$image' )";
-                if (mysqli_query($conn, $sql)) {
+                $sql = "INSERT INTO users (Username, Password, DateCreated, Image) VALUES ('$name', '$password','$date', '$image' )";
+                if (mysqli_query($connection, $sql)) {
                     session_start();
                 $_SESSION["username"] = $username;
-                header("Location: Admin.php");
+                header("Refresh: 0; URL = index.php");
                 } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    echo "Error: " . $sql . "<br>" . mysqli_error($connection);
                 }   
                 }
                 

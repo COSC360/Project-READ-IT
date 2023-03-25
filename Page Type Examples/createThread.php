@@ -8,8 +8,9 @@
         <title>READ-IT - New Thread</title>
 
         <link rel="stylesheet" href="css/createThread.css">
-        <?php 
+        <?php
             include "connection.php";
+            include "session.php";
             
         ?>
     </head>
@@ -67,6 +68,10 @@
             <input id="file-upload" type="file" name="file" accept="image/*, video/*"></label>
             <input type="submit" name="submit" value="Post Thread">
         </form>
+
+        <footer>
+            <span>&copy; COSC 360 - Project READ-IT</span>
+        </footer>
 
     </body>
 </html>

@@ -104,7 +104,7 @@
         </div>
 
         <footer>
-            <span>&copy; COSC 360 - Team Luca + Fareeha</span>
+            <span>&copy; COSC 360 - Project READ-IT</span>
         </footer>
 
       </body>
