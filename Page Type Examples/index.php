@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/index.css">
     <?php 
         include "connection.php";
+        include "dp.php"
     ?>
   </head>
 
