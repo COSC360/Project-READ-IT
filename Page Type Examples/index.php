@@ -3,51 +3,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>READ-IT - Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
     <?php 
+        //session_start();
         include "connection.php";
         include "dp.php"; 
         include "session.php";
+
+        global $connection;
+
+        // if(isset($_SESSION["username"])) {
+        //     $username = $_SESSION["username"];
+        //     $sql = "SELECT username FROM users WHERE username = ?";
+        //     $statement = mysqli_prepare($connection, $sql);
+        //     $statement -> bind_param("s", $username);
+        //     $statement -> execute();
+        //     $result = $statement -> get_result();
+        //     if($row = $result -> fetch_assoc()){
+        //         // echo "User already logged in!";
+        //         // header("Refresh: 5; URL = index.php");
+        //     }
+        // } else {
+        //     // echo "<p>HELLO GUEST</p>";
+        // }
+
+
     ?>
   </head>
 
 
   <body>
         <header id="masthead">
-            <h1>READ-IT</h1>
+            <h1><a href="index.php">
+                READ-IT
+            </a></h1>
 
             <input id="search" type="text" placeholder="Search READ-IT...">
-            <?php
-
-            if(isset($_SESSION['username'])){
-             ?>
-            <div id="user-profile-image">
-                <a href="profile.php"> <!-- link to user profile page -->
-                    <img src= $_SESSION['image']> <!-- add user profile picture when logged in -->
-                </a>
-            </div>
 
             <?php
+            if(isset($_SESSION["username"])) {
+                echo "<div id='logout'><a href='logout.php'>Logout</a></div><div id='user-profile-image'><a href='profile.php'>";
+                    // $username = $_SESSION["username"];
+                    // $sql = "SELECT picture FROM users WHERE username = ?";
+                    //     $statement = mysqli_prepare($connection, $sql);
+                    //     $statement -> bind_param("s", $username);
+                    //     $statement -> execute();
+                    //     $result = $statement -> get_result();
+                    //     if($row = $result -> fetch_assoc()){
+                    //         echo "<img src='" . $row["picture"] . "'>";
+                    //     }
+                    // } else {
+                    //     echo "<img src=''>";
+                echo "</a></div>";                        
+            } else {
+                echo "<div id='login'><a href='Login.php'>Login</a></div><div id='signup'><a href='signUp.php'>Sign Up</a></div>"; 
             }
-             ?>
-
-            <?php
-            if(!isset($_SESSION['username'])){
-             ?>
-            <div id="login-button">
-                <a href="login.php"> 
-                    <p>Login</p>
-                </a>
-            </div>
-
-            <?php
-            }
-             ?>
-
+            ?>
+            
         </header>
 
         <div id="main">
