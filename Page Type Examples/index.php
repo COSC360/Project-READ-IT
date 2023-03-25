@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>READ-IT - Dashboard</title>
 
@@ -34,7 +34,9 @@
 
   <body>
         <header id="masthead">
-            <h1>READ-IT</h1>
+            <h1><a href="index.php">
+                READ-IT
+            </a></h1>
 
             <input id="search" type="text" placeholder="Search READ-IT...">
 

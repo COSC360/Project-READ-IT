@@ -63,7 +63,7 @@
     </head>
     <body>
         <div id="breadcrumb">
-            <a href="index.php">Home</a>-> <span style="text-decoration: underline;">Sign Up</span>
+            <a href="index.php">Home</a> -> <span style="text-decoration: underline;">Sign Up</span>
         </div>
                 
         <div id = "SignUpBody">
@@ -97,7 +97,7 @@
                     </div>
                 </form>
             </div>
-            <p id =login>Already Have an Account?&nbsp;<a href="Login.html">Login</a></p>
+            <p id =login>Already Have an Account?&nbsp;<a href="Login.php">Login</a></p>
         </div>
 
         <script>
