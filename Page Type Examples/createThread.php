@@ -32,7 +32,7 @@
         </div>
         <br>
 
-        <form>
+        <form action="" method="POST">
             <input type="text" placeholder="Title">
             <textarea placeholder="Type text here..." maxlength="1000"></textarea>
             <input id="file-upload" type="file" accept="image/*, video/*">
