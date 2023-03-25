@@ -133,7 +133,20 @@ footer {
     margin-top: 1em;
 }
 
-#right-sidebar {
+#right-sidebar-loggedIn{
+    display: block;
+    float: right;
+    width: 15em;
+    height: 25em;
+    margin: 2em 2em 1em 0;
+    padding: 1em 1em 2em 1em;
+    border: 1px solid #4B56D2;
+    border-radius: 0.75em;
+    background-color: #82C3EC;
+    
+}
+
+#right-sidebar-loggedOut {
     display: block;
     float: right;
     width: 15em;
@@ -198,22 +211,20 @@ footer {
 }
 
 #create-post-button {
-    cursor: pointer;
-    display: block;
+    display: block !important;
     position: relative;
-    width: 12.5em;
-    height: 4em;
     margin-top: 1em;
     margin-right: auto;
     margin-left: auto;
     border: none;
-    border-radius: 0.75em;
     background-color: #472183;
     color: white;
+    
 }
 
+
 #create-post-button:hover {
-    background-color: #391672;
+    background-color: #391672 !important;
 }
 
 #posts {
@@ -293,4 +304,8 @@ footer {
 
 .post-content img, .post-content video {
     width: 100%;
+}
+#login-button{
+    color:white;
+    margin-right: 1em;
 }
