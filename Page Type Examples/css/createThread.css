@@ -51,10 +51,11 @@ header a:-webkit-any-link {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     width: 100%;
     height: 2em;
+    bottom: 0;
     line-height: 2em;
     margin: 1em 0 0 0;
     text-align: center;
