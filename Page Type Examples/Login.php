@@ -11,6 +11,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/SignupandLogin.css"/>
+    <script type="text/javascript" src="LoginValidator.js"></script>
+  
     <?php
         session_start();
         include "connection.php";
@@ -63,7 +65,6 @@
     ?>
 
 
-
     <title>Login</title>
 </head>
 <body>
@@ -72,15 +73,20 @@
     </div>
 
     <div id = "SignUpBody">
+
+        <div class="alert alert-danger" id = "error" style="position:flex; top:1em; display: none;">
+                <p id= "error"> <p>
+            </div>
+
         <div id="Title">
             Login
         </div>
         <div id = SignUpForm>
-            <form id="form" method="POST" action="#"> 
-                <label class ="labelText" for="username"> Username:</label><br>
-                <input type="text" name="username" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required><br>
-                <label class ="labelText" for="password"> Password:</label><br>
-                <input type="password" name="password" class="form-control" id="inputPassword2" required><br>
+            <form id="form" method="POST" > 
+                <label class ="labelText" for="username" id = usernameText> Username:</label><br>
+                <input type="text" name="username" class="form-control" id= "username" required><br>
+                <label class ="labelText" for="password" id = "passwordText"> Password:</label><br>
+                <input type="password" name="password" class="form-control" id="password" required><br>
                 <div id =subButton> 
                     <button class="btn btn-primary btn-lg" type="submit">Login</button>
                 </div>
