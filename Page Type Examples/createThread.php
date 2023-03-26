@@ -11,6 +11,10 @@
         <?php
             include "connection.php";
             include "session.php";
+
+            if(isset($_POST["Title"]) && isset($_POST["Text"]) && isset($_POST["Category"])) {
+                
+            }
             
         ?>
     </head>
@@ -50,7 +54,7 @@
         </div>
         <br>
 
-        <form action="post.php" method="POST">
+        <form action="#" method="POST">
             <input type="text" placeholder="Title">
             <textarea placeholder="Type text here..." maxlength="1000"></textarea>
             <label for="category" style="color: #472183; font-weight: bold;">Category: </label>
