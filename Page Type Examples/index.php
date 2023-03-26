@@ -156,7 +156,7 @@
                 $numPosts = 0;
                 while($row = $result -> fetch_assoc()) {
                    $numPosts++;
-                    echo "<a href='post.php'><div class='post-container'><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'>" . $row["Text"] . "</article><div style='float: right; margin-top: 1em; margin-right: 2em;'>Likes: " . $row["Likes"] . "</div></div></a>";
+                    echo "<a href='post.php?post=" . $row['ThreadId'] . "'><div class='post-container'><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'>" . $row["Text"] . "</article><div style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</div></div></a>";
                     // echo "<a href='post.php'><div class='post-container'><div class='post-profile-image'><a href='#'><img src=''></a></div><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'></article></div></a>";
                 }
                 if($numPosts == 0) {
@@ -172,7 +172,7 @@
                 $numPosts = 0;
                 while($row = $result -> fetch_assoc()) {
                    $numPosts++;
-                    echo "<a href='post.php'><div class='post-container'><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'>" . $row["Text"] . "</article><div style='float: right; margin-top: 1em; margin-right: 2em;'>Likes: " . $row["Likes"] . "</div></div></a>";
+                    echo "<a href='post.php?post=" . $row['ThreadId'] . "'><div class='post-container'><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'>" . $row["Text"] . "</article><div style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</div></div></a>";
                 }
                 if($numPosts == 0) {
                     echo "<div style='margin-top: 5em;'>No posts!</div>";
