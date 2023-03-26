@@ -17,20 +17,78 @@
     <title>Admin</title>
 </head>
 <body>
+            
+
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
               <a class="navbar-brand" href="#">READ-IT(ADMIN PAGE)</a>
               <ul class="navbar-nav ">
                 <li class="nav-item ">
-                  <a class="nav-link" href="#">Return Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="index.php">Return Home <span class="sr-only">(current)</span></a>
                 </li>
               </ul>
             </div>
           </nav>
     </header>
+    <?php           
+              if(isset($_POST["addadmin"])) {
+
+                $isValid = true;
+                 $makeAdmin = trim($_POST["addadmin"]);
+
+                if($makeAdmin == ""){
+                    $isValid = false;
+                    echo "<p>Username cannot be empty</p>";
+                }
+                if($isValid){
+                    $sql2 = "SELECT IsAdmin FROM users WHERE Username = '$makeAdmin'";
+                    $statementAdmin = mysqli_prepare($connection, $sql2);
+                    $statementAdmin -> execute();
+                    $resultAdmin = $statementAdmin -> get_result();
+                    $rowAdmin = $resultAdmin -> fetch_assoc();
+                    $checkStatus = $rowAdmin["IsAdmin"];
+                    if($checkStatus == 1){
+                        $isValid = false;
+                        echo "<p>User is already an admin</p>";
+                    }
+                }
+
+                if($isValid){
+                    $sql3 = "UPDATE users SET IsAdmin = 1 WHERE Username = '$makeAdmin'";
+                    $statement = mysqli_prepare($connection, $sql3);
+                    $statement -> execute();
+                    header("Refresh: 5; URL = Admin.php");  
+                }
+               
+              }
+            ?>
+
+
     <div id = "main"> 
         <div class="column-left"> 
+                <ul class="list-group">
+                    <li id = "title-groups" class="list-group-item disabled">Admins</li>
+                    <li id ="Admin-Users-List" class="list-group-item list-group-item-action">
+                        <ul>
+                    <?php 
+
+                    $sql = "SELECT Username FROM users where IsAdmin = 1";
+                    $statement = mysqli_prepare($connection, $sql);
+                    $statement -> execute();
+                    $result = $statement -> get_result();
+                    $count =0;
+                    while($row = $result -> fetch_assoc()) {
+                        $count ++;
+                        echo  "<li class='list-group-item list-group-item-action'>" .$count .": " . $row['Username'] ."</li>";
+                    }   
+
+                    ?>
+                        </ul>
+                    
+                  </ul>
+
                 <ul class="list-group">
                     <li id = "title-groups" class="list-group-item disabled">Website Statistics</li>
                     <li class="list-group-item list-group-item-action">Number of Users: 50</li>
@@ -40,7 +98,35 @@
                     <li class="list-group-item list-group-item-action">Number of Users You Have Banned: 1</li>
                   </ul>
         </div>
+
+
+
+
+
+
         <div class="column-right"> 
+            <ul class="list-group">
+
+
+            <li id = "title-groups" class="list-group-item disabled">Add Admin</li>
+            <li class="list-group-item list-group-item-action">
+                <form  id = "AddAdmin" method="post"> 
+                <label class ="labelText" name = "addadmin" for="addadmin"> Username:</label><br>
+                <input type="text" class="form-control" name ="addadmin" ><br>
+                <div id =subButton> 
+                    <button class="btn btn-primary btn-lg" type="submit">Add Admin</button>
+                </div>
+             </form>
+
+
+
+            </ul>
+
+
+
+
+
+
             <ul class="list-group">
                 <li id = "title-groups" class="list-group-item disabled">Banned Users Terminal</li>
                 <li class="list-group-item list-group-item-action">
@@ -53,6 +139,7 @@
                         <button class="btn btn-danger btn-lg" type="submit">BAN</button>
                     </div>
                  </form>
+
                 </li>
                 <li id ="sublist" class="list-group-item list-group-item-action">Banned Users: </li>
                 <li id ="Banned-Users-List" class="list-group-item list-group-item-action">
