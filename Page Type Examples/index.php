@@ -57,7 +57,7 @@
             </a></h1>
 
             <!-- <form id="search-form" style="display: block; line-height: 5em;"> -->
-                <input id="search" name="search" type="text" placeholder="Search READ-IT...">
+            <input class="form-control mr-sm-2"id = "search" type="search" placeholder="Search" aria-label="Search" style="width:20" >
             <!-- </form> -->
 
             <?php
@@ -259,7 +259,7 @@
                     console.log("Error: " + textStatus + ": " + errorThrown);
                 }
                 });
-        }, 100000)
+        }, 1000)
 
         const threadsElement = function(item){
             const {Title, ThreadId, Text, Likes} = item;

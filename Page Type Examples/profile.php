@@ -15,7 +15,11 @@
         include "connection.php";
         include "session.php";
 
-      
+    
+        if(!isset($_SESSION["username"])){   
+          header("Refresh: 0; URL = login.php"); 
+      }
+    
 
 
     ?>
@@ -107,38 +111,24 @@
                 </div>
 
                 <div id="Posts-By-User">
-                    <div class="PostDatabase">
-                       <div class="Post-Information">
-                        <p class = "Post-Title-Database">Title: </p><br> <br>
-                        <p class = "Post-Text-Database">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus felis risus, sit amet vestibulum urna placerat quis. Aenean at tortor viverra, elementum lectus sit amet, ornare mauris. Phasellus venenatis purus at vehicula interdum. Nam faci</p>
-                        <p class = "Post-Date_Dataabse"> 00/00/00</p>
-                       </div> 
-                       <div class="Post-Information">
-                        <p class = "Post-Title-Database">Title: </p><br> <br>
-                        <p class = "Post-Text-Database">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus felis risus, sit amet vestibulum urna placerat quis. Aenean at tortor viverra, elementum lectus sit amet, ornare mauris. Phasellus venenatis purus at vehicula interdum. Nam faci</p>
-                        <p class = "Post-Date_Dataabse"> 00/00/00</p>
-                       </div> 
-                       <div class="Post-Information">
-                        <p class = "Post-Title-Database">Title: </p><br> <br>
-                        <p class = "Post-Text-Database">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus felis risus, sit amet vestibulum urna placerat quis. Aenean at tortor viverra, elementum lectus sit amet, ornare mauris. Phasellus venenatis purus at vehicula interdum. Nam faci</p>
-                        <p class = "Post-Date_Dataabse"> 00/00/00</p>
-                       </div> 
-                       <div class="Post-Information">
-                        <p class = "Post-Title-Database">Title: </p><br> <br>
-                        <p class = "Post-Text-Database">orci eros vitae neque. Morbi ac turpis magna. Maecenas magna nulla, sagittis non diam sed, scelerisque efficitur metus. Nam a urna dapibus, maximus ante id, volutpat elit. Fusce vestibulum sapien nec nibh tincidunt molestie. Mauris aliquet molestie convallis. Nam sit amet porta velit. Nulla ornare quis justo quis pellentesque.</p>
-                        <p class = "Post-Date_Dataabse"> 00/00/00</p>
-                       </div> 
-                       <div class="Post-Information">
-                        <p class = "Post-Title-Database">Title: </p><br> <br>
-                        <p class = "Post-Text-Database">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus felis risus, sit amet vestibulum urna placerat quis. Aenean at tortor viverra, elementum lectus sit amet, ornare mauris. Phasellus venenatis purus at vehicula interdum. Nam faci</p>
-                        <p class = "Post-Date_Dataabse"> 00/00/00</p>
-                       </div> 
-                       <div class="Post-Information">
-                        <p class = "Post-Title-Database">Title: </p><br> <br>
-                        <p class = "Post-Text-Database">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus felis risus, sit amet vestibulum urna placerat quis. Aenean at tortor viverra, elementum lectus sit amet, ornare mauris. Phasellus venenatis purus at vehicula interdum. Nam faci</p>
-                        <p class = "Post-Date_Dataabse"> 00/00/00</p>
-                       </div> 
-                    </div>
+                <ul class="list-group">
+                    <li id = "title-groups" class="list-group-item disabled"><?php echo  $username ?> Posts: </li>
+                    <li class="list-group-item list-group-item-action">Number of Users: 50</li>
+                    <!-- <?php 
+
+                    // $sql = "SELECT Title Date FROM threads WHERE user_id = (SELECT id FROM users WHERE username = '$username')";
+                    // $statement = mysqli_prepare($connection, $sql);
+                    // $statement -> execute();
+                    // $result = $statement -> get_result();
+                    // while($row = $result -> fetch_assoc()) {
+                    //     $count ++;
+                    //     echo  "<li class='list-group-item list-group-item-action'> TITLE: ".$row['Title']. "Date Created". $row['Date'] ."</li>";
+                    // }   
+
+                    ?> -->
+
+                    
+                </ul>
                 </div>
             </div>
 
@@ -173,7 +163,7 @@
                 <section id="New-Post">
 
                     <form class = "New-Post" > 
-                        <input id= "Newpost" class="btn btn-primary " type="submit" value="NewPost">
+                        <input id= "Newpost" class="btn btn-primary " type="submit" value="NewThread">
                     </form>
 
                     <div id = "update" style = "display: inline; "> 
