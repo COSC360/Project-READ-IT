@@ -15,55 +15,7 @@
             if(!isset($_SESSION["username"])) {
                 header("Refresh: 0; URL = index.php");
             }
-            if(isset($_REQUEST["title"]) && isset($_REQUEST["text"]) && isset($_REQUEST["category"])) {
-                if($_SERVER["REQUEST_METHOD"] == "GET") {
-                    die("Bad data");
-                }
-            
-                if($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $username = $_SESSION["username"];
-                    $sql = "SELECT UserId FROM users WHERE Username = ?";
-                    $statement = mysqli_prepare($connection, $sql);
-                    $statement -> bind_param("s", $username);
-                    $statement -> execute();
-                    $result = $statement -> get_result();
-                    if($row = $result -> fetch_assoc()) {
-                        $title = $_POST["title"];
-                        $text = $_POST["text"];
-                        $category = $_POST["category"];
-                        $userId = $row["UserId"];
-                    
-                        if(isset($_POST["file"])) {
-                            $file = $_POST["file"];
-                            // date_timezone_set();
-                            $date = date('Y-m-d');
 
-                            $sql = "INSERT INTO threads (Title, Text, Category, File, Date, UserId) VALUES (?, ?, ?, ?, ?, ?)";
-                            $statement = mysqli_prepare($connection, $sql);
-                            $statement -> bind_param("sssssi", $title, $text, $category, $file, $date, $userId);
-                            $statement -> execute();
-                        } else {
-                            $sql = "INSERT INTO threads (Title, Text, Category, Date, UserId) VALUES (?, ?, ?, ?, ?)";
-                            $statement = mysqli_prepare($connection, $sql);
-                            $statement -> bind_param("ssssi", $title, $text, $category, $date, $userId);
-                            $statement -> execute();
-                            // $result = $statement -> get_result();
-                            // if($row = $result -> fetch_assoc()) {
-                            //     echo "<p>Thread titled " . $row["Title"] . "successfully posted</p>";
-                            //     header("Refresh: 2; URL = index.php");
-                            // } else {
-                            //     echo "<p>Could not post thread, try again</p>";
-                            //     header("Refresh: 2; URL = createThread.php");
-                            // }
-                        }
-                        echo "YAY!!";
-                    } else {
-                        echo "FALSE";
-                    }
-                }
-                mysqli_close($connection);
-                header("Refresh: 5; URL = index.php");
-            }
         ?>
     </head>
 
@@ -120,6 +72,58 @@
             <input id="file-upload" type="file" name="file" accept="image/*"></label>
             <input type="submit" name="submit" value="Post Thread">
         </form>
+
+        <?php
+            if(isset($_REQUEST["title"]) && isset($_REQUEST["text"]) && isset($_REQUEST["category"])) {
+                if($_SERVER["REQUEST_METHOD"] == "GET") {
+                    die("Bad data");
+                }
+            
+                if($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $username = $_SESSION["username"];
+                    $sql = "SELECT UserId FROM users WHERE Username = ?";
+                    $statement = mysqli_prepare($connection, $sql);
+                    $statement -> bind_param("s", $username);
+                    $statement -> execute();
+                    $result = $statement -> get_result();
+                    if($row = $result -> fetch_assoc()) {
+                        $title = $_POST["title"];
+                        $text = $_POST["text"];
+                        $category = $_POST["category"];
+                        $userId = $row["UserId"];
+                    
+                        if(isset($_POST["file"])) {
+                            $file = $_POST["file"];
+                            date_default_timezone_set("America/Vancouver");
+                            $date = date("Y-m-d");
+
+                            $sql = "INSERT INTO threads (Title, Text, Category, File, Date, UserId) VALUES (?, ?, ?, ?, ?, ?)";
+                            $statement = mysqli_prepare($connection, $sql);
+                            $statement -> bind_param("sssssi", $title, $text, $category, $file, $date, $userId);
+                            $statement -> execute();
+                        } else {
+                            $sql = "INSERT INTO threads (Title, Text, Category, Date, UserId) VALUES (?, ?, ?, ?, ?)";
+                            $statement = mysqli_prepare($connection, $sql);
+                            $statement -> bind_param("ssssi", $title, $text, $category, $date, $userId);
+                            $statement -> execute();
+                            // $result = $statement -> get_result();
+                            // if($row = $result -> fetch_assoc()) {
+                            //     echo "<p>Thread titled " . $row["Title"] . "successfully posted</p>";
+                            //     header("Refresh: 2; URL = index.php");
+                            // } else {
+                            //     echo "<p>Could not post thread, try again</p>";
+                            //     header("Refresh: 2; URL = createThread.php");
+                            // }
+                        }
+                        echo "<p style='display: block; text-align: center;'>Created post!<p>";
+                    } else {
+                        echo "<p>FALSE<p>";
+                    }
+                }
+                mysqli_close($connection);
+                header("Refresh: 2; URL = index.php");
+            }
+        ?>
 
         <footer>
             <span>&copy; COSC 360 - Project READ-IT</span>
