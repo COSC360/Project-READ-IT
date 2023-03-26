@@ -50,7 +50,7 @@
         </div>
         <br>
 
-        <form action="" method="POST">
+        <form action="post.php" method="POST">
             <input type="text" placeholder="Title">
             <textarea placeholder="Type text here..." maxlength="1000"></textarea>
             <label for="category" style="color: #472183; font-weight: bold;">Category: </label>
@@ -65,7 +65,7 @@
                 <option value="Food">Food</option>
                 <option value="Career">Career</option>
             </select>
-            <input id="file-upload" type="file" name="file" accept="image/*, video/*"></label>
+            <input id="file-upload" type="file" name="file" accept="image/*"></label>
             <input type="submit" name="submit" value="Post Thread">
         </form>
 
