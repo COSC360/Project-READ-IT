@@ -8,6 +8,8 @@
     <title>READ-IT - Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <?php 
         //session_start();
         include "connection.php";
@@ -146,6 +148,7 @@
                 </select>
             </form>
             
+            <div id="threadsBox">
             <?php
 
             if(isset($_GET["sort"])) {
@@ -208,6 +211,7 @@
                 //     </article>
                 // </div>
             ?>
+            </div>
 
             
             <!-- <a href="post.php">
@@ -231,6 +235,47 @@
         <footer>
             <span>&copy; COSC 360 - Project READ-IT</span>
         </footer>
+       <script>
+        setInterval(function() {
+            var category = $('#sort').val();
 
+            $.ajax({
+                url: "./ajax.php",
+                data: {sort: category}, // pass the user ID as a parameter
+                dataType: "json", // specify that the response should be in JSON format
+                success: function(data) {
+                    // display the username on the webpage
+                    $("#threadsBox").empty();
+                    data.forEach(function(item) {
+                        const html = threadsElement(item);
+                        $("#threadsBox").append(html);
+                    });
+
+                
+                    
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // handle errors here
+                    console.log("Error: " + textStatus + ": " + errorThrown);
+                }
+                });
+        }, 100000)
+
+        const threadsElement = function(item){
+            const {Title, ThreadId, Text, Likes} = item;
+            html = `
+            <a href='post.php?post= ${ThreadId}'>
+                <div class='post-container'>
+                    <h3>${Title}</h3>
+                    ${ThreadId}
+                    <article class='post-content'> ${Text}<</article>
+                    <div style='float: right; margin-top: 1em; margin-right: 2em;'>${Likes}Likes</div>
+                </div>
+            </a>
+            `
+            return html;
+        }
+
+    </script>
       </body>
 </html>
