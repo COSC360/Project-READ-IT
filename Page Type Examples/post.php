@@ -66,21 +66,49 @@
                         ?>
                     </article>
                     <?php
-                    echo "<div style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</div>";
+                    $dateCreated = date("F d, Y", strtotime($row["Date"]));
+                    echo "<p style='margin-top: 1em; float: left;'>" . $dateCreated . "</p><p style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</p>";
                     ?>
                 </div>
 
                 <div id="comment-section">
-                    <div id="add-comment">
-                        <form id="post-comment">
-                            <textarea placeholder="Add a comment..."></textarea>
-                            <input type="submit" value="Post">
-                        </form>
-                    </div>
+                    <?php 
+                            if(isset($_SESSION["username"])) {
+                                $username = $_SESSION["username"];
+                                echo "<div id='add-comment'><form id='post-comment' method='POST' action='#'><textarea name='add-comment' placeholder='Add a comment...'></textarea><input type='submit' value='Post'></form></div>";
+                    
+                                if(isset($_POST["add-comment"])) {
+                                $isValid = true;
+                                $addComment = trim($_POST["add-comment"]);
+                                    if($addComment == "") {
+                                        $isValid = false;
+                                        echo "<p>Comment cannot be empty!</p>";
+                                    }
+                                    if($isValid) {
+                                        date_default_timezone_set("America/Vancouver");
+                                        $date = date("Y-m-d");
+                                        $sql = "SELECT UserId FROM users WHERE Username = ?";
+                                        $statement = mysqli_prepare($connection, $sql);
+                                        $statement -> bind_param("s", $username);
+                                        $statement -> execute();
+                                        $result0 = $statement -> get_result();
+                                        if($row0 = $result0 -> fetch_assoc()) {
+                                            $userId = $row0["UserId"];
+                                            $sql = "INSERT INTO comments (Comment, ThreadId, UserId, CommentDate) VALUES (?, ?, ?, ?)";
+                                            $statement = mysqli_prepare($connection, $sql);
+                                            $statement -> bind_param("siis", $addComment, $threadId, $userId, $date);
+                                            $statement -> execute(); 
+                                        }
+                                    }
+                                }
+                            } else {
+                                
+                            }
+                    ?>
 
                     <div id="comments">
                         <?php
-                            $sql = "SELECT * FROM comments WHERE ThreadId = ? ORDER BY CommentDate ASC";
+                            $sql = "SELECT * FROM comments WHERE ThreadId = ? ORDER BY CommentDate DESC";
                             $statement = mysqli_prepare($connection, $sql);
                             $statement -> bind_param("i", $threadId);
                             $statement -> execute();
@@ -95,7 +123,7 @@
                                 $statement -> execute();
                                 $result3 = $statement -> get_result();
                                 if($row3 = $result3 -> fetch_assoc()) {
-                                    echo "<div class='comment'><p class='comment-username' style='border: none; margin-bottom: 0;'>" . $row3["Username"] . "<br>" . $commentDate . "</p><p>" . $comment . "</p></div>";
+                                    echo "<div class='comment'><p class='comment-username' style='border: none; margin-bottom: 0; padding: 0; background-color: unset;'>" . $row3["Username"] . "<br>" . $commentDate . "</p><p>" . $comment . "</p></div>";
                                 }
                             }
                         ?>
