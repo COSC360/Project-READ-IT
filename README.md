@@ -1,9 +1,5 @@
 # MyDiscussionForum
 
-### Team Members: 
-
-Luca Deverteuil and Fareeha Hayat
-
 ## Project Description
 
 Our team will undertake the MyDiscussionForum project, a forum-style website intended to facilitate online user discussions. The discussions can be of any topic of the user’s choosing and depend on other user's participation.
