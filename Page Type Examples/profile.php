@@ -163,7 +163,7 @@
                 <section id="New-Post">
 
                     <form class = "New-Post" > 
-                        <input id= "Newpost" class="btn btn-primary " type="submit" value="NewThread">
+                        <input id= "Newpost" class="btn btn-primary " type="submit" value="New Thread">
                     </form>
 
                     <div id = "update" style = "display: inline; "> 
