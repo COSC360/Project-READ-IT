@@ -33,6 +33,8 @@ header h1 {
     margin-right: auto;
     font-family: Arial, sans-serif;
     font-size: 48px;
+    font-weight: bold !important;
+    line-height: unset !important;
 }
 
 header a:-webkit-any-link {
@@ -41,6 +43,11 @@ header a:-webkit-any-link {
     font-family: Arial, sans-serif;
     color: white;
     cursor: pointer;
+}
+
+#logout a:-webkit-any-link {
+    position: absolute;
+    right: 5em;
 }
 
 footer {
