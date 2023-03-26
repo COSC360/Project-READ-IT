@@ -328,7 +328,29 @@ footer {
     display: inline-block;
     position: relative;
     /* min-height: 3em; */
-    margin: 1em 0 1em 1em;
+    margin: 2em 1em 0 1em;
+}
+
+.comment p {
+    display: block;
+    position: relative;
+    float: right;
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    border: 1px solid #4B56D2;
+    border-radius: 0.75em;
+}
+
+.comment-username{
+    display: block;
+    position: relative;
+    float: right;
+    width: 100%;
+    margin-bottom: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
 }
 
 #comment-profile-image {
@@ -352,16 +374,4 @@ footer {
     min-height: 1em;
     margin-left: 1.5em;
     border-left: 1px solid #4B56D2;
-}
-
-.comment p {
-    display: block;
-    position: relative;
-    float: right;
-    width: 100%;
-    margin: 2em 1em 0 1em;
-    padding: 1em;
-    box-sizing: border-box;
-    border: 1px solid #4B56D2;
-    border-radius: 0.75em;
 }
