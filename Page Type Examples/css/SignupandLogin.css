@@ -78,3 +78,7 @@ input[type=file] {
     min-height: 100%;
     min-width: 100%;
 }
+
+.highlight{
+    color: red !important;
+}

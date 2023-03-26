@@ -37,6 +37,7 @@ header h1 {
     line-height: unset !important;
 }
 
+
 header a:-webkit-any-link {
     text-decoration: none !important;
     display: block;
@@ -107,6 +108,7 @@ footer {
     height: 100%;
     border-radius: 50%;
 }
+
 
 #user-profile-image img {
     cursor: pointer;
@@ -218,14 +220,6 @@ footer {
     margin: 1em 0 0 1em;
     padding-bottom: 1em;
     /* font-weight: 500; */
-}
-
-#create-post a:-webkit-any-link {
-    text-decoration: none !important;
-    display: block;
-    font-family: Arial, sans-serif;
-    color: white;
-    cursor: pointer;
 }
 
 #create-post-button {
