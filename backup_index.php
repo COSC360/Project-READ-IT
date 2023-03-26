@@ -1,7 +1,7 @@
 <?php
 define('DBHOST', 'cosc360.ok.ubc.ca');
-define('DBNAME', 'db_81822173');
-define('DBUSER', '81822173');
+define('DBNAME', 'db_20489167');
+define('DBUSER', '20489167');
 define('DBPASS', 'newpassword');
 			$connection = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 			$error = mysqli_connect_error();
