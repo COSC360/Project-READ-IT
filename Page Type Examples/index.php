@@ -155,7 +155,7 @@
                 $category = $_GET["sort"];
                 $sql = "SELECT * FROM threads WHERE Category = ?";
                 if ($category == "Most Recent") {
-                    $sql = "SELECT * FROM threads ORDER BY Date ASC"; 
+                    $sql = "SELECT * FROM threads ORDER BY Date DESC"; 
                     $statement = mysqli_prepare($connection, $sql);
                     $statement -> execute();
                     $result = $statement -> get_result(); 
@@ -173,8 +173,8 @@
                 $numPosts = 0;
                 while($row = $result -> fetch_assoc()) {
                    $numPosts++;
-                    echo "<a href='post.php?post=" . $row['ThreadId'] . "'><div class='post-container'><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'>" . $row["Text"] . "</article><div style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</div></div></a>";
-                    // echo "<a href='post.php'><div class='post-container'><div class='post-profile-image'><a href='#'><img src=''></a></div><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'></article></div></a>";
+                    echo "<a href='post.php?post=" . $row['ThreadId'] . "'><div class='post-container'><h3>" . $row["Title"] . "</h3><article class='post-content'>" . $row["Text"] . "</article><div style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</div></div></a>";
+                    // echo "<a href='post.php'><div class='post-container'><div class='post-profile-image'><a href='#'><img src=''></a></div><h3>" . $row["Title"] . "</h3><article class='post-content'></article></div></a>";
                 }
                 if($numPosts == 0) {
                     echo "<div style='margin-top: 5em;'><p>No posts!</p></div>";
@@ -182,14 +182,14 @@
                 mysqli_close($connection);
                 // die("Closed connection");
             } else {
-                $sql = "SELECT * FROM threads ORDER BY Date ASC";
+                $sql = "SELECT * FROM threads ORDER BY Date DESC";
                 $statement = mysqli_prepare($connection, $sql);
                 $statement -> execute();
                 $result = $statement -> get_result();
                 $numPosts = 0;
                 while($row = $result -> fetch_assoc()) {
                    $numPosts++;
-                    echo "<a href='post.php?post=" . $row['ThreadId'] . "'><div class='post-container'><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'>" . $row["Text"] . "</article><div style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</div></div></a>";
+                    echo "<a href='post.php?post=" . $row['ThreadId'] . "'><div class='post-container'><h3>" . $row["Title"] . "</h3><article class='post-content'>" . $row["Text"] . "</article><div style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</div></div></a>";
                 }
                 if($numPosts == 0) {
                     echo "<div style='margin-top: 5em;'>No posts!</div>";
@@ -267,9 +267,8 @@
             <a href='post.php?post= ${ThreadId}'>
                 <div class='post-container'>
                     <h3>${Title}</h3>
-                    ${ThreadId}
                     <article class='post-content'> ${Text}<</article>
-                    <div style='float: right; margin-top: 1em; margin-right: 2em;'>${Likes}Likes</div>
+                    <div style='float: right; margin-top: 1em; margin-right: 2em;'>${Likes} Likes</div>
                 </div>
             </a>
             `
