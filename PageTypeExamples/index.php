@@ -12,11 +12,24 @@
 
     <?php 
         //session_start();
-        include "connection.php";
+        // include "connection.php";
+
+        $host = 'cosc360.ok.ubc.ca';
+        $username = '20489167';
+        $password = 'newpassword';
+        $database = 'db_20489167';
+        // $database = "phpmyadmin";
+        
+        $connection = new mysqli($host, $username, $password, $database);
+        
+        if(!$connection()) {
+            die(mysqli_connect_error());
+        }
+
         // include "dp.php"; 
         include "session.php";
 
-        global $connection;
+        // global $connection;
 
         // if(isset($_SESSION["username"])) {
         //     $username = $_SESSION["username"];
