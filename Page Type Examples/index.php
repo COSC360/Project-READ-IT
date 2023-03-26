@@ -47,17 +47,18 @@
             <?php
             if(isset($_SESSION["username"])) {
                 echo "<div id='logout'><a href='logout.php'>Logout</a></div><div id='user-profile-image'><a href='profile.php'>";
-                    // $username = $_SESSION["username"];
-                    // $sql = "SELECT picture FROM users WHERE username = ?";
-                    //     $statement = mysqli_prepare($connection, $sql);
-                    //     $statement -> bind_param("s", $username);
-                    //     $statement -> execute();
-                    //     $result = $statement -> get_result();
-                    //     if($row = $result -> fetch_assoc()){
-                    //         echo "<img src='" . $row["picture"] . "'>";
-                    //     }
-                    // } else {
-                    //     echo "<img src=''>";
+                // $username = $_SESSION["username"];
+                // $sql = "SELECT Image FROM users WHERE username = ?";
+                // $statement = mysqli_prepare($connection, $sql);
+                // $statement -> bind_param("s", $username);
+                // $statement -> execute();
+                // $result = $statement -> get_result();
+                // if($row = $result -> fetch_assoc()){
+                //     echo "<img src='" . $row["Image"] . "'>";
+                // }
+                // else {
+                //     echo "<img src=''>";
+                // }
                 echo "</a></div>";                        
             } else {
                 echo "<div id='login'><a href='Login.php'>Login</a></div><div id='signup'><a href='signUp.php'>Sign Up</a></div>"; 
@@ -107,52 +108,109 @@
                     <button id = "create-post-button"class="btn btn-primary btn-lg"  disabled>Create Thread</button>
                 </div> 
             </nav>
-             <?php
+            <?php
             }
-             ?>
+            ?>
 
 
            <div id="posts"> 
 
-           
-
-           
-           
-           
            <!-- main dashboard content -->
-                <!-- <select name="sort" id="sort">
-                    <option value="recent">Most Recent</option>
-                    <option value="popular">Most Popular</option>
+           <form method="GET" action="#">
+                <select name="sort" id="sort" onchange="this.form.submit();">
+                    <option value="Most Recent" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Most Recent') { ?>selected="true" <?php }}; ?>>Most Recent</option>
+                    <option value="Most Popular" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Most Popular') { ?>selected="true" <?php }}; ?>>Most Popular</option>
+                    <option value="Sports" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Sports') { ?>selected="true" <?php }}; ?>>Sports</option>
+                    <option value="Film" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Film') { ?>selected="true" <?php }}; ?>>Film</option>
+                    <option value="Music" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Music') { ?>selected="true" <?php }}; ?>>Music</option>
+                    <option value="Travel" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Travel') { ?>selected="true" <?php }}; ?>>Travel</option>
+                    <option value="Science" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Science') { ?>selected="true" <?php }}; ?>>Science</option>
+                    <option value="Art" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Art') { ?>selected="true" <?php }}; ?>>Art</option>
+                    <option value="Health" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Health') { ?>selected="true" <?php }}; ?>>Health</option>
+                    <option value="Food" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Food') { ?>selected="true" <?php }}; ?>>Food</option>
+                    <option value="Career" <?php if(isset($_GET['sort'])) { if($_GET['sort'] == 'Career') { ?>selected="true" <?php }}; ?>>Career</option>
                 </select>
+            </form>
             
-                <div class="post-container"> 
-                    <div class="post-profile-image">
-                        <a href="#"> // link to user profile page
-                            <img src=""> 
-                        </a>
-                    </div>
+            <?php
 
+            if(isset($_GET["sort"])) {
+                $category = $_GET["sort"];
+                $sql = "SELECT * FROM threads WHERE Category = ?";
+                if ($category == "Most Recent") {
+                    $sql = "SELECT * FROM threads ORDER BY Date DESC"; 
+                    $statement = mysqli_prepare($connection, $sql);
+                    $statement -> execute();
+                    $result = $statement -> get_result(); 
+                } else if ($category == "Most Popular") {
+                    $sql = "SELECT * FROM threads ORDER BY Likes DESC"; 
+                    $statement = mysqli_prepare($connection, $sql);
+                    $statement -> execute();
+                    $result = $statement -> get_result(); 
+                } else {
+                    $statement = mysqli_prepare($connection, $sql);
+                    $statement -> bind_param("s", $category);
+                    $statement -> execute();
+                    $result = $statement -> get_result();
+                }
+                $numPosts = 0;
+                while($row = $result -> fetch_assoc()) {
+                   $numPosts++;
+                    echo "<a href='post.php'><div class='post-container'><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'>" . $row["Text"] . "</article><div style='float: right; margin-top: 1em; margin-right: 2em;'>Likes: " . $row["Likes"] . "</div></div></a>";
+                    // echo "<a href='post.php'><div class='post-container'><div class='post-profile-image'><a href='#'><img src=''></a></div><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'></article></div></a>";
+                }
+                if($numPosts == 0) {
+                    echo "<div style='margin-top: 5em;'><p>No posts!</p></div>";
+                }
+                mysqli_close($connection);
+                // die("Closed connection");
+            } else {
+                $sql = "SELECT * FROM threads ORDER BY Date DESC";
+                $statement = mysqli_prepare($connection, $sql);
+                $statement -> execute();
+                $result = $statement -> get_result();
+                $numPosts = 0;
+                while($row = $result -> fetch_assoc()) {
+                   $numPosts++;
+                    echo "<a href='post.php'><div class='post-container'><h3>" . $row["Title"] . "</h3>" . $row["ThreadId"] . "<article class='post-content'>" . $row["Text"] . "</article><div style='float: right; margin-top: 1em; margin-right: 2em;'>Likes: " . $row["Likes"] . "</div></div></a>";
+                }
+                if($numPosts == 0) {
+                    echo "<div style='margin-top: 5em;'>No posts!</div>";
+                }
+
+            }
+
+                // <div class="post-container"> 
+                //     <div class="post-profile-image">
+                //         <a href="#"> // link to user profile page
+                //             <img src=""> 
+                //         </a>
+                //     </div>
+
+                //     <h3>Post Title</h3>
+
+                //     <article class="post-content">
+                //         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at velit nec nisl feugiat convallis id at neque. Maecenas convallis eleifend nisl, at ultricies tellus bibendum ac. Morbi in eros efficitur, efficitur sapien a, egestas mauris. Proin eu diam a mauris egestas iaculis sed sit amet urna. In sit amet ultrices lacus, at accumsan massa. Sed sed commodo justo, sed fermentum sapien. Phasellus venenatis tempor arcu a faucibus. Suspendisse quam sem, maximus ut quam ac, cursus lobortis elit. Mauris feugiat lacus eu efficitur dapibus. Morbi aliquet ligula vestibulum mi commodo, sit amet interdum ipsum dignissim.
+                //     </article>
+                // </div>
+            ?>
+
+            
+            <!-- <a href="post.php">
+                <div class="post-container">
                     <h3>Post Title</h3>
-
-                    <article class="post-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at velit nec nisl feugiat convallis id at neque. Maecenas convallis eleifend nisl, at ultricies tellus bibendum ac. Morbi in eros efficitur, efficitur sapien a, egestas mauris. Proin eu diam a mauris egestas iaculis sed sit amet urna. In sit amet ultrices lacus, at accumsan massa. Sed sed commodo justo, sed fermentum sapien. Phasellus venenatis tempor arcu a faucibus. Suspendisse quam sem, maximus ut quam ac, cursus lobortis elit. Mauris feugiat lacus eu efficitur dapibus. Morbi aliquet ligula vestibulum mi commodo, sit amet interdum ipsum dignissim.
+                     <article class="post-content">
+                        <img src="images/166.jpg">
+                        orem ipsum dolor sit amet, consectetur adipiscing elit. Nam at velit nec nisl feugiat convallis id at neque. Maecenas convallis eleifend nisl, at ultricies tellus bibendum ac. Morbi in eros efficitur, efficitur sapien a, egestas mauris
                     </article>
-                </div>
-
-                <div class="post-container"> 
-                    <div class="post-profile-image">
+                     <div class="post-profile-image" style="display: flex;">
                         <a href="#">
                             <img src="">
                         </a>
                     </div>
+                </div>
+            </a> -->
 
-                    <h3>Post Title</h3>
-
-                    <article class="post-content">
-                        <img src="images/166.jpg">
-                        orem ipsum dolor sit amet, consectetur adipiscing elit. Nam at velit nec nisl feugiat convallis id at neque. Maecenas convallis eleifend nisl, at ultricies tellus bibendum ac. Morbi in eros efficitur, efficitur sapien a, egestas mauris
-                    </article>
-                </div> -->
             </div>
         </div>
 
