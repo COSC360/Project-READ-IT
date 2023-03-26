@@ -138,7 +138,7 @@
                 $category = $_GET["sort"];
                 $sql = "SELECT * FROM threads WHERE Category = ?";
                 if ($category == "Most Recent") {
-                    $sql = "SELECT * FROM threads ORDER BY Date DESC"; 
+                    $sql = "SELECT * FROM threads ORDER BY Date ASC"; 
                     $statement = mysqli_prepare($connection, $sql);
                     $statement -> execute();
                     $result = $statement -> get_result(); 
@@ -165,7 +165,7 @@
                 mysqli_close($connection);
                 // die("Closed connection");
             } else {
-                $sql = "SELECT * FROM threads ORDER BY Date DESC";
+                $sql = "SELECT * FROM threads ORDER BY Date ASC";
                 $statement = mysqli_prepare($connection, $sql);
                 $statement -> execute();
                 $result = $statement -> get_result();
