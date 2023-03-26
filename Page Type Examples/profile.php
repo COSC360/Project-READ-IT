@@ -38,7 +38,7 @@
             ?>
             <?php
               if(isset($_POST["description"])) {
-                $newAboutMe = $_POST["description"];
+                $newAboutMe = trim($_POST["description"]);
                 $sql = "UPDATE users SET Description = '$newAboutMe' WHERE username = '$username'";
                 $statement = mysqli_prepare($connection, $sql);
                 $statement -> execute();
@@ -136,9 +136,9 @@
                   echo "<p id='About-Me'>". $about_me ."</p>" ;
                  }
                   ?>
-
+                      
                     <form id="Update-About-Me" style = "display: none" method="post" >
-                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                       <?php echo "<textarea class='form-control' id='description' name='description' rows='3'>". $about_me .  "</textarea>" ?>
                         <input id= "updateProfile" class="btn btn-primary" type="submit" value = "Update Profile" >
                     </form> 
                 
