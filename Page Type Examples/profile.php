@@ -13,10 +13,48 @@
     <link rel="stylesheet" href="./css/profile.css"/>
     <?php 
         include "connection.php";
+        include "session.php";
     ?>
   </head>
 
   <body>
+    <?php
+    // get the date created
+              $username = $_SESSION["username"];
+              $sql = "SELECT DateCreated FROM users WHERE username = '$username'";
+              $statement = mysqli_prepare($connection, $sql);
+              $statement -> execute();
+              $result = $statement -> get_result();
+              $row = $result -> fetch_assoc();
+              $date_created = $row["DateCreated"];
+            
+              /// get the user discription 
+              $sql = "SELECT Description FROM users WHERE username = '$username'";
+              $statementDes = mysqli_prepare($connection, $sql);
+              $statementDes -> execute();
+              $resultDes = $statementDes -> get_result();
+              $rowDes = $resultDes -> fetch_assoc();
+              $about_me = $rowDes["Description"];
+            ?>
+            <?php
+              if(isset($_POST["description"])) {
+                $newAboutMe = $_POST["description"];
+                $sql = "UPDATE users SET Description = '$newAboutMe' WHERE username = '$username'";
+                $statement = mysqli_prepare($connection, $sql);
+                $statement -> execute();
+                header("Refresh: 0; URL = profile.php");
+              }
+            ?>
+            <script>
+              function editProfile() {
+                document.getElementById("About-Me").style.display = "none";
+                document.getElementById("editProfile").style.display = "none";
+                document.getElementById("Update-About-Me").style.display = "block";
+              }
+            </script>
+
+
+
         <header id="masthead">
             <h1>READ-IT</h1>
         </header>
@@ -83,22 +121,39 @@
                 <section id="poster-profile">
                     <div id="poster-profile-image">
                         <a href="#"> <!-- link to poster's profile page -->
-                            <img src=""> <!-- add profile picture of poster -->
+                            <img src=""> 
                         </a>
                     </div>
-                    <a href="#" id="poster-username">Username</a>
+                   <?php echo "<p id='poster-username'>".$username."</a>" ?>
                 </section>
+
+
                 <section id="poster-description">
-                    <form id="Update-About-Me">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <input id= "updateProfile" class="btn btn-primary " type="submit" value="Submit">
-                    </form>
-                    <p id="Account-Created"> <b>Account created:</b><br>July 17, 2023</p>
+                <p ><b>About Me:</b></p>
+                 <?php if($about_me == NULL || $about_me == ""){
+                  echo "<p id='About-Me'>This user has not added an about me section yet.</p>";
+                 }else{
+                  echo "<p id='About-Me'>". $about_me ."</p>" ;
+                 }
+                  ?>
+
+                    <form id="Update-About-Me" style = "display: none" method="post" >
+                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                        <input id= "updateProfile" class="btn btn-primary" type="submit" value = "Update Profile" >
+                    </form> 
+                
+                   <?php echo "<p id='Account-Created'><b>Account created:</b><br>". $date_created ."</p>" ;?>
                 </section>
+
                 <section id="New-Post">
-                    <form class = "New-Post"> 
+
+                    <form class = "New-Post" > 
                         <input id= "Newpost" class="btn btn-primary " type="submit" value="NewPost">
                     </form>
+
+                    <div id = "update" style = "display: inline; "> 
+                   <input id= "editProfile" class="btn btn-primary " onclick= "editProfile()" value=" Edit Profile" style="width: 10em;">
+                  </div>
                 </section>
             </div>
         </div>

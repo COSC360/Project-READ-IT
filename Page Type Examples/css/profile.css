@@ -219,9 +219,8 @@ display: block;
 }
 
 .New-Post{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
+    margin-top: 0.5em;
 }
 
 #Newpost{
