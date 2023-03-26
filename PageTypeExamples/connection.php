@@ -1,6 +1,6 @@
 <?php 
 
-$host = "cosc360.ok.ubc.ca";
+$host = "localhost";
 $username = "20489167";
 $password = "newpassword";
 $database = "db_20489167";
