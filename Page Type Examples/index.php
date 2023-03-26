@@ -32,6 +32,18 @@
         // }
 
 
+        if(isset($_POST["search"])) {
+            $search = $_POST["search"];
+            $sql = "SELECT * FROM threads WHERE Title LIKE ? OR Text LIKE ?";
+            $statement = mysqli_prepare($connection, $sql);
+            $statement -> bind_param("s", $search);
+            $statement -> execute();
+            $result = $statement -> get_result();
+            if($row = $result -> fetch_assoc()) {
+                echo $row["Title"];
+            }
+        }
+
     ?>
   </head>
 
@@ -42,7 +54,9 @@
                 READ-IT
             </a></h1>
 
-            <input id="search" type="text" placeholder="Search READ-IT...">
+            <!-- <form id="search-form" style="display: block; line-height: 5em;"> -->
+                <input id="search" name="search" type="text" placeholder="Search READ-IT...">
+            <!-- </form> -->
 
             <?php
             if(isset($_SESSION["username"])) {
@@ -138,7 +152,7 @@
                 $category = $_GET["sort"];
                 $sql = "SELECT * FROM threads WHERE Category = ?";
                 if ($category == "Most Recent") {
-                    $sql = "SELECT * FROM threads ORDER BY Date DESC"; 
+                    $sql = "SELECT * FROM threads ORDER BY Date ASC"; 
                     $statement = mysqli_prepare($connection, $sql);
                     $statement -> execute();
                     $result = $statement -> get_result(); 
@@ -165,7 +179,7 @@
                 mysqli_close($connection);
                 // die("Closed connection");
             } else {
-                $sql = "SELECT * FROM threads ORDER BY Date DESC";
+                $sql = "SELECT * FROM threads ORDER BY Date ASC";
                 $statement = mysqli_prepare($connection, $sql);
                 $statement -> execute();
                 $result = $statement -> get_result();
