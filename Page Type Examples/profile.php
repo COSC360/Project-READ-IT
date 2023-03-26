@@ -14,6 +14,10 @@
     <?php 
         include "connection.php";
         include "session.php";
+
+      
+
+
     ?>
   </head>
 
@@ -35,6 +39,14 @@
               $resultDes = $statementDes -> get_result();
               $rowDes = $resultDes -> fetch_assoc();
               $about_me = $rowDes["Description"];
+
+              // get admin privalages
+              $sql = "SELECT IsAdmin FROM users WHERE username = '$username'";
+              $statementAdmin = mysqli_prepare($connection, $sql);
+              $statementAdmin -> execute();
+              $resultAdmin = $statementAdmin -> get_result();
+              $rowAdmin = $resultAdmin -> fetch_assoc();
+              $isadmin = $rowAdmin["IsAdmin"];
             ?>
             <?php
               if(isset($_POST["description"])) {
@@ -56,7 +68,20 @@
 
 
         <header id="masthead">
-            <h1>READ-IT</h1>
+            <h1><a href="index.php">
+                READ-IT
+            </a></h1>
+
+            <?php
+            if(isset($_SESSION["username"])) {
+                echo "<div id='logout'><a href='logout.php'>Logout</a></div><div id='user-profile-image'><a href='profile.php'>";
+                echo "</a></div>";                        
+            } else {
+                echo "<div id='login'><a href='Login.php'>Login</a></div><div id='signup'><a href='signUp.php'>Sign Up</a></div>"; 
+            }
+            ?>
+
+
         </header>
 
         <div id="main">
@@ -154,6 +179,19 @@
                     <div id = "update" style = "display: inline; "> 
                    <input id= "editProfile" class="btn btn-primary " onclick= "editProfile()" value=" Edit Profile" style="width: 10em;">
                   </div>
+                </section>
+                <section id = "isadmin"> 
+
+                  <?php
+                  if ($isadmin == 1){
+                  ?>
+                  <form action="Admin.php">
+                  <input id= "adminButton" class="btn btn-danger " type= "submit" value=" Admin Page" style="width: 10em;">
+                  </form>
+                  <?php
+                  }
+                  ?>
+
                 </section>
             </div>
         </div>
