@@ -12,13 +12,18 @@
     <link rel="stylesheet" href="./css/admin.css"/>
     <?php 
         include "connection.php";
+        include "session.php";
+            if(!isset($_SESSION["username"])){
+                
+                header("Refresh: 0; URL = error.php"); 
+            }
+
+           
     ?>
 
     <title>Admin</title>
 </head>
 <body>
-            
-
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -40,6 +45,7 @@
 
                 if($makeAdmin == ""){
                     $isValid = false;
+                    $error = true;
                     echo "<p>Username cannot be empty</p>";
                 }
                 if($isValid){
@@ -51,7 +57,8 @@
                     $checkStatus = $rowAdmin["IsAdmin"];
                     if($checkStatus == 1){
                         $isValid = false;
-                        echo "<p>User is already an admin</p>";
+                        $error = true;
+                        $error_message ="<p>User is already an admin</p>";
                     }
                 }
 
@@ -116,8 +123,8 @@
                 <div id =subButton> 
                     <button class="btn btn-primary btn-lg" type="submit">Add Admin</button>
                 </div>
-             </form>
-
+                </form>
+            
 
 
             </ul>
