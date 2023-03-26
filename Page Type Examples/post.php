@@ -79,10 +79,31 @@
                     </div>
 
                     <div id="comments">
-                        <div class="comment">
+                        <?php
+                            $sql = "SELECT * FROM comments WHERE ThreadId = ? ORDER BY CommentDate ASC";
+                            $statement = mysqli_prepare($connection, $sql);
+                            $statement -> bind_param("i", $threadId);
+                            $statement -> execute();
+                            $result2 = $statement -> get_result();
+                            while($row2 = $result2 -> fetch_assoc()) {
+                                $comment = $row2["Comment"];
+                                $commentDate = $row2["CommentDate"];
+                                $userId = $row2["UserId"];
+                                $sql = "SELECT Username FROM users LEFT JOIN comments ON users.UserId = comments.UserId WHERE comments.UserId = ?";
+                                $statement = mysqli_prepare($connection, $sql);
+                                $statement -> bind_param("i", $userId);
+                                $statement -> execute();
+                                $result3 = $statement -> get_result();
+                                if($row3 = $result3 -> fetch_assoc()) {
+                                    echo "<div class='comment'><p class='comment-username' style='border: none; margin-bottom: 0;'>" . $row3["Username"] . "<br>" . $commentDate . "</p><p>" . $comment . "</p></div>";
+                                }
+                            }
+                        ?>
+
+                        <!-- <div class="comment">
                             <div id="comment-profile-image">
-                                <a href="#"> <!-- link to commenter's profile page -->
-                                    <img src=""> <!-- add commenter's profile image -->
+                                <a href="#">
+                                    <img src="">
                                 </a>
                             </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. CurLorem ipsum dolor sit amet, consectetur adipiscing elit. CurLorem ipsum dolor sit amet, consectetur adipiscing elit. CurLorem ipsum dolor sit amet, consectetur adipiscing elit. Cur</p>
@@ -91,13 +112,13 @@
 
                         <div class="comment">
                             <div id="comment-profile-image">
-                                <a href="#"> <!-- link to commenter's profile page -->
-                                    <img src=""> <!-- add commenter's profile image -->
+                                <a href="#">
+                                    <img src="">
                                 </a>
                             </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             <div id="vertical-line"></div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -109,12 +130,12 @@
                         $statement = mysqli_prepare($connection, $sql);
                         $statement -> bind_param("i", $row["UserId"]);
                         $statement -> execute();
-                        $result = $statement -> get_result();
-                        if($row = $result -> fetch_assoc()) {
-                            if (isset($row["Image"])) {
+                        $result4 = $statement -> get_result();
+                        if($row4 = $result4 -> fetch_assoc()) {
+                            if (isset($row3["Image"])) {
                                 // echo "<div id='poster-profile-image'><a href='#'> <!-- link to poster's profile page --><img src='" . $row["Image"] . "'></a></div>";
                             }
-                            echo "<a href='#' id='poster-username'>" . $row["Username"] . "</a>";
+                            echo "<a href='#' id='poster-username'>" . $row4["Username"] . "</a>";
                         
                     ?>
                 </section>
@@ -122,14 +143,14 @@
                     <b>Description</b><br>
                     <!-- This user doesn't exist yet :) -->
                     <?php
-                            echo $row["Description"];
+                            echo $row4["Description"];
                     ?>
                 </section>
                 <section id="account-created">
                     <b>Account created:</b><br>
                     <!-- July 17, 2023 -->
                     <?php
-                            echo date("F d, Y", strtotime($row["DateCreated"]));
+                            echo date("F d, Y", strtotime($row4["DateCreated"]));
                         }
                     ?>
                 </section>
