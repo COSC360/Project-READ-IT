@@ -97,14 +97,14 @@
                             date_default_timezone_set("America/Vancouver");
                             $date = date("Y-m-d");
 
-                            $sql = "INSERT INTO threads (Title, Text, Category, File, Date, UserId) VALUES (?, ?, ?, ?, ?, ?)";
+                            $sql = "INSERT INTO threads (Title, Text, Category, File, Date, UserId,Likes) VALUES (?, ?, ?, ?, ?, ?, ?)";
                             $statement = mysqli_prepare($connection, $sql);
-                            $statement -> bind_param("sssssi", $title, $text, $category, $file, $date, $userId);
+                            $statement -> bind_param("sssssi", $title, $text, $category, $file, $date, $userId,0);
                             $statement -> execute();
                         } else {
-                            $sql = "INSERT INTO threads (Title, Text, Category, Date, UserId) VALUES (?, ?, ?, ?, ?)";
+                            $sql = "INSERT INTO threads (Title, Text, Category, Date, UserId, Likes ) VALUES (?, ?, ?, ?, ?, ?)";
                             $statement = mysqli_prepare($connection, $sql);
-                            $statement -> bind_param("ssssi", $title, $text, $category, $date, $userId);
+                            $statement -> bind_param("ssssi", $title, $text, $category, $date, $userId,0);
                             $statement -> execute();
                             // $result = $statement -> get_result();
                             // if($row = $result -> fetch_assoc()) {
