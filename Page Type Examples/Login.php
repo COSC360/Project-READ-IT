@@ -33,7 +33,7 @@
             // echo "<p>HELLO GUEST</p>";
         }
 
-        if(isset($_POST["username"]) && isset($_POST["password"])) {
+        if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
             if($_SERVER["REQUEST_METHOD"] == "GET") {
                 die("Bad data");
             }
@@ -48,13 +48,13 @@
                 $statement -> bind_param("ss", $username, $password);
                 $statement -> execute();
                 $result = $statement -> get_result();
-                if($row = $result -> fetch_assoc()){
+                if($row = $result -> fetch_assoc()) {
                     echo "<p>" . $row["username"] . " successfully logged in</p>";
                     $_SESSION["username"] = $row["username"];
-                    header("Refresh: 2; URL = index.php");
+                    header("Refresh: 1; URL = index.php");
                 } else {
                     echo "<p>Invalid username and/or password</p>";
-                    header("Refresh: 2; URL = Login.php");
+                    header("Refresh: 1; URL = Login.php");
                 }
             }
             mysqli_close($connection);
