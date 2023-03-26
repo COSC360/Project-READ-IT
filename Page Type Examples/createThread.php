@@ -12,10 +12,35 @@
             include "connection.php";
             include "session.php";
 
-            if(isset($_POST["Title"]) && isset($_POST["Text"]) && isset($_POST["Category"])) {
-                
+            if(!isset($_SESSION["username"])) {
+                header("Refresh: 0; URL = index.php");
             }
+            if(isset($_REQUEST["title"]) && isset($_REQUEST["text"]) && isset($_REQUEST["category"])) {
+                if($_SERVER["REQUEST_METHOD"] == "GET") {
+                    die("Bad data");
+                }
             
+                if($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $title = $_POST["title"];
+                    $text = $_POST["text"];
+                    $category = $_POST["category"];
+        
+                    $sql = "INSERT INTO threads (Title, Text, Category) VALUES (?, ?, ?)";
+                    $statement = mysqli_prepare($connection, $sql);
+                    $statement -> bind_param("sss", $title, $text, $category);
+                    $statement -> execute();
+                    // $result = $statement -> get_result();
+                    // if($row = $result -> fetch_assoc()) {
+                    //     echo "<p>Thread titled " . $row["Title"] . "successfully posted</p>";
+                    //     header("Refresh: 2; URL = index.php");
+                    // } else {
+                    //     echo "<p>Could not post thread, try again</p>";
+                    //     header("Refresh: 2; URL = createThread.php");
+                    // }
+                }
+                mysqli_close($connection);
+                header("Refresh: 0; URL = index.php");
+            }
         ?>
     </head>
 
@@ -54,10 +79,10 @@
         </div>
         <br>
 
-        <form action="#" method="POST">
-            <input type="text" placeholder="Title">
-            <textarea placeholder="Type text here..." maxlength="1000"></textarea>
-            <label for="category" style="color: #472183; font-weight: bold;">Category: </label>
+        <form method="POST">
+            <input type="text" name="title" placeholder="Title">
+            <textarea name="text" placeholder="Type text here..." maxlength="1000"></textarea>
+            <label for="category" name="category" style="color: #472183; font-weight: bold;">Category: </label>
             <select name="category" id="category" style="margin-top: 1em; margin-right: 5em;">
                 <option value="Sports">Sports</option>
                 <option value="Film">Film</option>
