@@ -25,10 +25,12 @@
                 $numPosts = 0;
                 while($row = $result -> fetch_assoc()) {
                    $numPosts++;
+                   $date = date("F j, Y", strtotime($row["Date"]));
                    $posts[] = array(
                         'ThreadId' => $row['ThreadId'],
                         'Title' => $row['Title'],
                         'Text' => $row['Text'],
+                        'DateCreated' => $date,
                         'Likes' => $row['Likes']
                     );
                 }
@@ -43,10 +45,12 @@
                 $statement -> execute();
                 $result = $statement -> get_result();
                 while($row = $result -> fetch_assoc()) {
+                    $date = date("F j, Y", strtotime($row["Date"]));
                     $posts[] = array(
                         'ThreadId' => $row['ThreadId'],
                         'Title' => $row['Title'],
                         'Text' => $row['Text'],
+                        'DateCreated' => $date,
                         'Likes' => $row['Likes']
                     );
                 }

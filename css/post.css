@@ -178,7 +178,7 @@ footer {
     margin-top: 1em;
     margin-bottom: 2em;
     padding-bottom: 1em;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #472183;
     font-size: 24px;
 }
 
@@ -216,7 +216,7 @@ footer {
     display: block;
     position: relative;
     padding: 1em;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #472183;
 }
 
 #poster-profile-image {
@@ -247,7 +247,11 @@ footer {
     position: relative;
     height: 7.5em;
     margin: 1em 0 1em 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #472183;
+}
+
+#poster-description {
+    color: white;
 }
 
 #account-created {
@@ -256,10 +260,15 @@ footer {
     font-weight: 500;
 }
 
+#account-created {
+    color: white;
+}
+
 #comment-section {
     display: inline-block;
     position: relative;
     width: 70%;
+    min-height: 10em;
     margin-bottom: 1em;
     text-align: unset;
     padding: 3em 5em 3em 5em;
@@ -344,6 +353,7 @@ footer {
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
     background-color: white;
+    color: #472183;
 }
 
 .comment-username{
