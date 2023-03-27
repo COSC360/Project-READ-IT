@@ -6,10 +6,9 @@
 // $database = "project-read-it";
 
 $host = "cosc360.ok.ubc.ca";
-$username = "81822173";
-$password = "newpassword";
-$dbname = "db_81822173";
-
+$username = "85707669";
+$password = "85707669";
+$dbname = "db_85707669";
 // // $database = "phpmyadmin";
 
 // $connection = new mysqli($host, $username, $password, $database);
