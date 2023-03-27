@@ -236,6 +236,7 @@ footer {
     margin: 2em 13.5em 0 0;
     font-weight: 800;
     text-decoration: none;
+    /* color: #472183; */
 }
 
 #poster-username:hover {
@@ -248,20 +249,14 @@ footer {
     height: 7.5em;
     margin: 1em 0 1em 0;
     border-bottom: 1px solid #472183;
-}
-
-#poster-description {
-    color: white;
+    color: #472183;
 }
 
 #account-created {
     display: block;
     position: relative;
     font-weight: 500;
-}
-
-#account-created {
-    color: white;
+    color: #472183;
 }
 
 #comment-section {

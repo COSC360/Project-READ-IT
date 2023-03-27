@@ -127,7 +127,7 @@
                                 $statement -> execute();
                                 $result3 = $statement -> get_result();
                                 if($row3 = $result3 -> fetch_assoc()) {
-                                    echo "<div class='comment'><p class='comment-username' style='border: none; margin-bottom: 0; padding: 0; padding-left: 1em; padding-bottom: 0.25em; background-color: unset; color: white'>" . $row3["Username"] . "<br>" . $commentDate . "</p><p>" . $comment . "</p></div>";
+                                    echo "<div class='comment'><p class='comment-username' style='border: none; margin-bottom: 0; padding: 0; padding-left: 1em; padding-bottom: 0.25em; background-color: unset; color: #472183'>" . $row3["Username"] . "<br>" . $commentDate . "</p><p>" . $comment . "</p></div>";
                                 }
                             }
                         ?>
