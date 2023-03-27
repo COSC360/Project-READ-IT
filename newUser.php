@@ -38,7 +38,7 @@
             }
 
                 if($isValid){
-                $sql = "INSERT INTO users (Username, Email, Password, DateCreated, Image, IsAdmin) VALUES ('$name','$email','$password','$date', '$image', '$admin' )";
+                $sql = "INSERT INTO users (Username, Email, Password, DateCreated, Image) VALUES ('$name','$email','$password','$date', '$image')";
                 if (mysqli_query($connection, $sql)) {
                     session_start();
                 // $_SESSION["username"] = $username;
