@@ -1,5 +1,5 @@
 function checkForm(){
-	var form = document.getElementById("SignUpForm");
+	var form = document.getElementById("form");
 	var passwordRepeatText = document.getElementById("passwordCheckText");
 	var passwordText = document.getElementById("passwordText");
 	var ErrorMessage = document.getElementById("error");
@@ -27,7 +27,7 @@ function checkForm(){
 
 function validateForm(event){
 	var isValid = true;	// assume everything is valid until proven otherwise
-	var form = document.getElementById("SignUpForm");
+	var form = document.getElementById("form");
 	
 	var passWord = document.getElementById("password");
 	var passwordRepeat = document.getElementById("passwordCheck");

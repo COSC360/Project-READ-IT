@@ -1,5 +1,5 @@
 <?php session_start();
-// require_once('include.php');
+require_once('connection.php');
 ?>
 <?php
 // echo "welcome, {$_SESSION['username']}";  
