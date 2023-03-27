@@ -1,15 +1,15 @@
 <?php 
 
-$host = 'cosc360.ok.ubc.ca';
-$username = '20489167';
-$password = 'newpassword';
-$database = 'db_20489167';
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "project-read-it";
 // $database = "phpmyadmin";
 
 $connection = new mysqli($host, $username, $password, $database);
 
-if(!$connection()) {
-    die(mysqli_connect_error());
+if(mysqli_connect_error()) {
+    die("Server error");
 }
 
 ?>

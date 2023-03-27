@@ -48,6 +48,10 @@
             ?>
         </header>
 
+        <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
+            <a href="index.php">Home</a> -> <span style="text-decoration: underline;">Create Thread</span>
+        </div>
+
         <br>
         <div id="new-thread-title">
             New Thread

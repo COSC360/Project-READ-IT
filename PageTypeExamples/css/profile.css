@@ -47,7 +47,7 @@ header a:-webkit-any-link {
 
 #logout a:-webkit-any-link {
     position: absolute;
-    right: 1em;
+    right: 3em;
 }
 footer {
     position: relative;

@@ -34,7 +34,7 @@
               $statement -> execute();
               $result = $statement -> get_result();
               $row = $result -> fetch_assoc();
-              $date_created = $row["DateCreated"];
+              $date_created = date("F d, Y", strtotime($row["DateCreated"]));
             
               /// get the user discription 
               $sql = "SELECT Description FROM users WHERE username = '$username'";
@@ -87,6 +87,10 @@
 
 
         </header>
+
+        <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
+            <a href="index.php">Home</a> -> <span style="text-decoration: underline;">Profile</span>
+        </div>
 
         <div id="main">
             <div id="post">

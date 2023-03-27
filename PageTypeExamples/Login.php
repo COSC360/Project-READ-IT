@@ -58,9 +58,10 @@
                 }
             }
             mysqli_close($connection);
-            die("Closed connection");
+            die();
+            // die("Closed connection");
         } else {
-            echo "<p>NO CREDENTIALS</p>";
+            // echo "<p>NO CREDENTIALS</p>";
         }
     ?>
 
@@ -68,7 +69,7 @@
     <title>Login</title>
 </head>
 <body>
-    <div id="breadcrumb">
+    <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
         <a href="index.php">Home</a> -> <span style="text-decoration: underline;">Login</span>
     </div>
 

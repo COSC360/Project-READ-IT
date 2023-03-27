@@ -12,24 +12,12 @@
 
     <?php 
         //session_start();
-        // include "connection.php";
-
-        $host = 'cosc360.ok.ubc.ca';
-        $username = '20489167';
-        $password = 'newpassword';
-        $database = 'db_20489167';
-        // $database = "phpmyadmin";
-        
-        $connection = new mysqli($host, $username, $password, $database);
-        
-        if(!$connection()) {
-            die(mysqli_connect_error());
-        }
+        include "connection.php";
 
         // include "dp.php"; 
         include "session.php";
 
-        // global $connection;
+        global $connection;
 
         // if(isset($_SESSION["username"])) {
         //     $username = $_SESSION["username"];
@@ -95,6 +83,10 @@
             ?>
             
         </header>
+
+        <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
+            <span style="text-decoration: underline;">Home</span>
+        </div>
 
         <div id="main">
 
@@ -280,7 +272,7 @@
             <a href='post.php?post= ${ThreadId}'>
                 <div class='post-container'>
                     <h3>${Title}</h3>
-                    <article class='post-content'> ${Text}<</article>
+                    <article class='post-content'> ${Text}</article>
                     <div style='float: right; margin-top: 1em; margin-right: 2em;'>${Likes} Likes</div>
                 </div>
             </a>
