@@ -19,7 +19,7 @@ $dbname = "db_20489167";
 //     die("Server error");
 // }
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $connection = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     echo "Connected to $dbname at $host successfully.";
     } catch (PDOException $pe) {
     die ("Could not connect to the database $dbname :" . $pe->getMessage());
