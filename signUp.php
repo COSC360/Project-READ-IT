@@ -18,11 +18,15 @@
     <title>Sign Up</title>
 
     <?php
-    // session_start();
+    include "session.php";
     include "connection.php";
     include "newUser.php";
     // // include "db.php";
     // $error_message ;
+
+    if(isset($_SESSION["username"])) {
+        header("Refresh: 0; URL = index.php");
+    }
     
     // if(isset($_POST['signup'])) {
     //     $name = trim($_POST["username"]);

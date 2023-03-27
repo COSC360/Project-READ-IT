@@ -14,28 +14,20 @@
     <!-- <script type="text/javascript" src="LoginValidator.js"></script> -->
   
     <?php
-        session_start();
+        // session_start();
+        include "session.php";
         include "connection.php";
         global $connection;
         
         if(isset($_SESSION["username"])) {
-            $username = $_SESSION["username"];
-            $sql = "SELECT username FROM users WHERE username = ?";
-            $statement = mysqli_prepare($connection, $sql);
-            $statement -> bind_param("s", $username);
-            $statement -> execute();
-            $result = $statement -> get_result();
-            if($row = $result -> fetch_assoc()){
-                echo "User already logged in!";
-                header("Refresh: 0; URL = index.php");
-            }
-        } else {
-            // echo "<p>HELLO GUEST</p>";
+            echo "User already logged in!";
+            header("Refresh: 0; URL = index.php");
         }
 
         if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
             if($_SERVER["REQUEST_METHOD"] == "GET") {
                 die("Bad data");
+                header("Refresh: 0; URL = index.php");
             }
     
             if($_SERVER["REQUEST_METHOD"] == "POST") {
