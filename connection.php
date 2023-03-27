@@ -13,17 +13,17 @@ $password = "20489167";
 $dbname = "db_20489167";
 // (NEW PASSOWRD)$password = "newpassword";
 
-// $connection = new mysqli($host, $username, $password, $database);
+$connection = new mysqli($host, $username, $password, $dbname);
 
-// if(mysqli_connect_error()) {
-//     die("Server error");
-// }
-try {
-    $connection = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    echo "Connected to $dbname at $host successfully.";
-    } catch (PDOException $pe) {
-    die ("Could not connect to the database $dbname :" . $pe->getMessage());
-    }
+if(mysqli_connect_error()) {
+    die("Server error");
+}
+// try {
+//     $connection = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+//     echo "Connected to $dbname at $host successfully.";
+//     } catch (PDOException $pe) {
+//     die ("Could not connect to the database $dbname :" . $pe->getMessage());
+//     }
 
 
 
