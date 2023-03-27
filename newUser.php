@@ -10,6 +10,7 @@
                 $date = date("Y-m-d");
                 $image = $_POST["image"];
                 $email = $_POST["email"];
+                $admin = 0;
                 
                 $isValid = true;
 
@@ -37,7 +38,7 @@
             }
 
                 if($isValid){
-                $sql = "INSERT INTO users (Username, Email, Password, DateCreated, Image) VALUES ('$name','$email','$password','$date', '$image' )";
+                $sql = "INSERT INTO users (Username, Email, Password, DateCreated, Image) VALUES ('$name','$email','$password','$date', '$image', '$admin' )";
                 if (mysqli_query($connection, $sql)) {
                     session_start();
                 // $_SESSION["username"] = $username;
