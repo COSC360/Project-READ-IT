@@ -21,32 +21,32 @@ The logical processes incude:
 ## Layout
 
 Dashboard
-![Dashboard Page](images/Dashboard%20Page.png)
+![Dashboard Page](Client-Side-Experience-Images/Dashboard%20Page.png)
 The dashboard page is the main page of the site, where users can view discussion posts and navigate to all other pages. We wanted to make it easy for users to view and comment on other posts. On the right side in case users wanted to go back on their old post visited we added it to the user's board, as well as an easy way for users to upload their own threads.
 
 Sign Up
-![Sign Up Page](images/Sign%20Up%20Page.png)
+![Sign Up Page](Client-Side-Experience-Images/Sign%20Up%20Page.png)
 The sign up page is used to create an account for the site, allowing users to access more features. It is a simple and easy to understand design. We aren't sure yet if we want to make the user to upload an email, or if it will just be a username. With a username we dont need to make sure that it is an email. However emails have more of a validation for users. We are leaning towards using an email for users to login. To do that users would then have to make up their own username for their profile and we will have to include that for the signup page, as it is missing at the moment.
 
 Login
-![Login Page](images/Login%20page.png)
+![Login Page](Client-Side-Experience-Images/Login%20page.png)
 The login page allows users to provide their credentials to login to the site. The login page is just like the sign up page. It is easy to use and understand, as we have all seen similar pages when we login to our favourite websites. There is also a link for users to sign up. If we cannot find the user's login name we would suggest to the user if they have an account.  
 
 Discussion Post
-![Discussion Post Page](images/Discussion%20Post%20Page.png)
+![Discussion Post Page](Client-Side-Experience-Images/Discussion%20Post%20Page.png)
 The discussion post page includes the post's content, information about the poster, and a comment section. Our look for this post is to be similar to Reddit's. You see the post and it is easy to read/view. You will also get the ability to comment on comments or even comment on the post. Reddit has a great design for this and we didn't want to re-invent the wheel. We also will support uploads of images.
 
 User Profile
-![User Profile Page](images/User%20Page.png)
+![User Profile Page](Client-Side-Experience-Images/User%20Page.png)
 The user profile page shows the posts created by the user, as well as the user's information. The user profile will easily be able to view all of their posts that they have. This is on the left hand of the screen. We added a recent, older, and search option for the user to view all of their own posts. This gives the user flexibility when dealing with their posts. We also want to give the user a chance to delete their own post. On the right hand side we give the user a chance to update their profile. They can add a comment about themselves, add a profile picture, and easily post a thread as well. A profile page deserves to be customizable, and that's what we added to the user profile page.
 
 Admin
-![Admin Page](images/Admin%20Page.png)
+![Admin Page](Client-Side-Experience-Images/Admin%20Page.png)
 The admin page view is used to delete posts and ban users, and can only be accessed by admin users. We also wanted to add stats each admin would have on their own, which would be the ability to see how many people they have banned. Besides that, the admin page is easy to understand and use. We did not want to overcomplicate it. Each admin page will be accessible through their own user profile page.
 
 ## Site Map
 
-![Site Map](images/Sitemap.png)
+![Site Map](Client-Side-Experience-Images/Sitemap.png)
 
 Users can access the login, sign up, discussion post, and user profile pages from the dashboard page. Additionally, the admin page can be accessed from the user profile page if the user has admin permissions.
 

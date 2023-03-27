@@ -70,7 +70,7 @@
                         ?>
                     </article>
                     <?php
-                    $dateCreated = date("F d, Y", strtotime($row["Date"]));
+                    $dateCreated = date("F j, Y", strtotime($row["Date"]));
                     echo "<p style='margin-top: 1em; float: left;'>" . $dateCreated . "</p><p style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</p>";
                     ?>
                 </div>
@@ -182,7 +182,7 @@
                     <b>Account created:</b><br>
                     <!-- July 17, 2023 -->
                     <?php
-                            echo date("F d, Y", strtotime($row4["DateCreated"]));
+                            echo date("F j, Y", strtotime($row4["DateCreated"]));
                         }
                     ?>
                 </section>
