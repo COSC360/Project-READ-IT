@@ -71,7 +71,7 @@
                     </article>
                     <?php
                     $dateCreated = date("F j, Y", strtotime($row["Date"]));
-                    echo "<p style='margin-top: 1em; float: left;'>" . $dateCreated . "</p><p style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</p>";
+                    echo "<p style='margin-top: 1em; margin-left: 1em; float: left;'>" . $dateCreated . "</p><p style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</p>";
                     ?>
                 </div>
 
@@ -119,7 +119,7 @@
                             $result2 = $statement -> get_result();
                             while($row2 = $result2 -> fetch_assoc()) {
                                 $comment = $row2["Comment"];
-                                $commentDate = $row2["CommentDate"];
+                                $commentDate = date("F j, Y", strtotime($row2["CommentDate"]));
                                 $userId = $row2["UserId"];
                                 $sql = "SELECT Username FROM users LEFT JOIN comments ON users.UserId = comments.UserId WHERE comments.UserId = ?";
                                 $statement = mysqli_prepare($connection, $sql);
@@ -127,7 +127,7 @@
                                 $statement -> execute();
                                 $result3 = $statement -> get_result();
                                 if($row3 = $result3 -> fetch_assoc()) {
-                                    echo "<div class='comment'><p class='comment-username' style='border: none; margin-bottom: 0; padding: 0; background-color: unset;'>" . $row3["Username"] . "<br>" . $commentDate . "</p><p>" . $comment . "</p></div>";
+                                    echo "<div class='comment'><p class='comment-username' style='border: none; margin-bottom: 0; padding: 0; padding-left: 1em; padding-bottom: 0.25em; background-color: unset; color: #472183'>" . $row3["Username"] . "<br>" . $commentDate . "</p><p>" . $comment . "</p></div>";
                                 }
                             }
                         ?>
