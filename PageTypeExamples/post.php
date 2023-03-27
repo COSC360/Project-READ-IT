@@ -46,6 +46,10 @@
             ?>
         </header>
 
+        <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
+            <a href="index.php">Home</a> -> <span style="text-decoration: underline;">Post</span>
+        </div>
+
         <div id="main">
             <div id="post">
                 <div class="post-container"> <!-- example post -->
