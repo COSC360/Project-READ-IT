@@ -40,8 +40,8 @@
                 $sql = "INSERT INTO users (Username, Email, Password, DateCreated, Image) VALUES ('$name','$email','$password','$date', '$image' )";
                 if (mysqli_query($connection, $sql)) {
                     session_start();
-                $_SESSION["username"] = $username;
-                header("Refresh: 0; URL = index.php");
+                // $_SESSION["username"] = $username;
+                header("Refresh: 0; URL = Login.php");
                 } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($connection);
                 }   

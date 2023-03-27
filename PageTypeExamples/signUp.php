@@ -96,7 +96,7 @@
         </div>
         <div id=SignUp>
         <div id = SignUpForm>
-                <form id = form method="post" action="newUser.php" onsubmit='checkForm()' > 
+                <form id ="form" method="post" action="newUser.php" onsubmit= 'return checkForm()' > 
                     <label class ="labelText" name = "username" for="Username" name = "username"> Username:</label><br>
                     <input type="text" name = "username" class="form-control" id="username"  required><br>
                     <label class ="labelText" name = "email" for="email" name = "email"> Email:</label><br>
@@ -106,7 +106,7 @@
                     <label class ="labelText" for="Password" name = "passwordCheck" id="passwordCheckText">  Repeat Password:</label><br>
                     <input type="password" class="form-control" name = "passwordCheck" id="passwordCheck" required><br>
                     <label class="labelText" for="upload-image" name = "image">Profile Picture:</label><br>
-                    <input type="file" id="upload-image" accept="image/*" name = "image" onchange="previewImage(event)">
+                    <input type="file" id="upload-image" accept="image/*" name = "image" onchange="previewImage(event)" required>
                     <div id="profile-picture-container">
                         <img id="profile-picture" src="#"/>
                     </div>

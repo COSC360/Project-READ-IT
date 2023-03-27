@@ -167,11 +167,11 @@
                 <section id="New-Post">
 
                     <form class = "New-Post" > 
-                        <input id= "Newpost" class="btn btn-primary " type="submit" value="New Thread">
+                        <input id= "Newpost" class="btn btn-primary " value="New Thread " onclick= "window.location.href='createThread.php'" style="cursor: pointer;">
                     </form>
 
                     <div id = "update" style = "display: inline; "> 
-                   <input id= "editProfile" class="btn btn-primary " onclick= "editProfile()" value=" Edit Profile" style="width: 10em;">
+                   <input id= "editProfile" class="btn btn-primary " onclick= "editProfile()" value=" Edit Profile" style="width: 10em; cursor: pointer;" >
                   </div>
                 </section>
                 <section id = "isadmin"> 
