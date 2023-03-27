@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./css/SignupandLogin.css" />
     <script type="text/javascript" src="Validator.js"></script>
 
-    <title>SignUp</title>
+    <title>Sign Up</title>
 
     <?php
     // session_start();
@@ -27,6 +27,7 @@
     // if(isset($_POST['signup'])) {
     //     $name = trim($_POST["username"]);
     //     $password = trim($_POST["password"]);
+    //     date_default_timezone_set("America/Vancouver");
     //     $date = date("Y-m-d");
     //     $image = $_POST["image"];
     //     $email = $_POST["email"];
@@ -95,7 +96,7 @@
         </div>
         <div id=SignUp>
         <div id = SignUpForm>
-                <form id = form method="post" action="newUser.php" onsubmit= return checkForm() > 
+                <form id = form method="post" action="newUser.php" onsubmit='checkForm()' > 
                     <label class ="labelText" name = "username" for="Username" name = "username"> Username:</label><br>
                     <input type="text" name = "username" class="form-control" id="username"  required><br>
                     <label class ="labelText" name = "email" for="email" name = "email"> Email:</label><br>

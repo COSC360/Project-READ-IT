@@ -105,13 +105,13 @@
                             $sql = "INSERT INTO threads (Title, Text, Category, File, Date, UserId, Likes) VALUES (?, ?, ?, ?, ?, ?, ?)";
                             $statement = mysqli_prepare($connection, $sql);
 
-                            $statement -> bind_param("sssssii", $title, $text, $category, $file, $date, $userId,$tempLikes);
+                            $statement -> bind_param("sssssii", $title, $text, $category, $file, $date, $userId, $tempLikes);
                             $statement -> execute();
                         } else {
                             $sql = "INSERT INTO threads (Title, Text, Category, Date, UserId, Likes) VALUES (?, ?, ?, ?, ?, ?)";
                             $statement = mysqli_prepare($connection, $sql);
 
-                            $statement -> bind_param("ssssii", $title, $text, $category, $date, $userId,$tempLikes);
+                            $statement -> bind_param("ssssii", $title, $text, $category, $date, $userId, $tempLikes);
                             $statement -> execute();
                             // $result = $statement -> get_result();
                             // if($row = $result -> fetch_assoc()) {
