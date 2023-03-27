@@ -6,18 +6,11 @@
 // $database = "project-read-it";
 // // $database = "phpmyadmin";
 
- // ORVINS CONNECTION (IT WORKS)
-// $host = "cosc360.ok.ubc.ca";
-// $username = "85707669";
-// $password = "85707669";
-// $dbname = "db_85707669";
 
-
-//LUCA'S CONNECTION
 $host = "cosc360.ok.ubc.ca";
-$username = "81822173";
-$password = "81822173";
-$dbname = "db_81822173";
+$username = "20489167";
+$password = "20489167";
+$dbname = "db_20489167";
 // (NEW PASSOWRD)$password = "newpassword";
 
 // $connection = new mysqli($host, $username, $password, $database);
