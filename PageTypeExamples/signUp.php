@@ -110,7 +110,7 @@
                     <div id="profile-picture-container">
                         <img id="profile-picture" src="#"/>
                     </div>
-                    <div id =subButton> 
+                    <div id ="subButton"> 
                         <button class="btn btn-primary btn-lg" name="signup" type="submit">Sign Up</button>
                     </div>
                 </form>

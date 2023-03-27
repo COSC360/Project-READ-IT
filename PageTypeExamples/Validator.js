@@ -1,15 +1,15 @@
 function checkForm(){
-	var form = document.getElementById("form");
+	var form = document.getElementById("SignUpForm");
 	var passwordRepeatText = document.getElementById("passwordCheckText");
 	var passwordText = document.getElementById("passwordText");
 	var ErrorMessage = document.getElementById("error");
 	form.onsubmit = function(e){
-		e.preventDefault();
 		// validateForm(e);
 		var proceed = validateForm(e);
 		if(proceed) {
 			return true;
 		} else {
+			e.preventDefault();
 			return false;
 		}
 	}
@@ -27,7 +27,7 @@ function checkForm(){
 
 function validateForm(event){
 	var isValid = true;	// assume everything is valid until proven otherwise
-	var form = document.getElementById("form");
+	var form = document.getElementById("SignUpForm");
 	
 	var passWord = document.getElementById("password");
 	var passwordRepeat = document.getElementById("passwordCheck");
