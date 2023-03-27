@@ -7,7 +7,7 @@
                 $category = $_GET["sort"];
                 $sql = "SELECT * FROM threads WHERE Category = ?";
                 if ($category == "Most Recent") {
-                    $sql = "SELECT * FROM threads ORDER BY Date ASC"; 
+                    $sql = "SELECT * FROM threads ORDER BY Date DESC"; 
                     $statement = mysqli_prepare($connection, $sql);
                     $statement -> execute();
                     $result = $statement -> get_result(); 
