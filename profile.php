@@ -34,7 +34,7 @@
               $statement -> execute();
               $result = $statement -> get_result();
               $row = $result -> fetch_assoc();
-              $date_created = date("F d, Y", strtotime($row["DateCreated"]));
+              $date_created = date("F j, Y", strtotime($row["DateCreated"]));
             
               /// get the user discription 
               $sql = "SELECT Description FROM users WHERE username = '$username'";
