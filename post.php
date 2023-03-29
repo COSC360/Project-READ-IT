@@ -90,7 +90,7 @@
                                     }
                                     if($isValid) {
                                         date_default_timezone_set("America/Vancouver");
-                                        $date = date("Y-m-d g:i:s A");
+                                        $date = date("Y-m-d G:i:s");
                                         $sql = "SELECT UserId FROM users WHERE Username = ?";
                                         $statement = mysqli_prepare($connection, $sql);
                                         $statement -> bind_param("s", $username);

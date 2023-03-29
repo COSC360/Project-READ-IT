@@ -100,7 +100,7 @@
                         if(isset($_POST["file"])) {
                             $file = $_POST["file"];
                             date_default_timezone_set("America/Vancouver");
-                            $date = date("Y-m-d");
+                            $date = $date = date("Y-m-d G:i:s");
 
                             $sql = "INSERT INTO threads (Title, Text, Category, File, Date, UserId, Likes) VALUES (?, ?, ?, ?, ?, ?, ?)";
                             $statement = mysqli_prepare($connection, $sql);
