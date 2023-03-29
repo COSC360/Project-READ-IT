@@ -25,7 +25,7 @@
                 $numPosts = 0;
                 while($row = $result -> fetch_assoc()) {
                    $numPosts++;
-                   $date = date("F j, Y", strtotime($row["Date"]));
+                   $date = date("F j, Y g:i:s A", strtotime($row["Date"]));
                    $posts[] = array(
                         'ThreadId' => $row['ThreadId'],
                         'Title' => $row['Title'],
@@ -45,7 +45,7 @@
                 $statement -> execute();
                 $result = $statement -> get_result();
                 while($row = $result -> fetch_assoc()) {
-                    $date = date("F j, Y", strtotime($row["Date"]));
+                    $date = date("F j, Y g:i:s A", strtotime($row["Date"]));
                     $posts[] = array(
                         'ThreadId' => $row['ThreadId'],
                         'Title' => $row['Title'],

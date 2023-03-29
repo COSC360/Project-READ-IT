@@ -70,7 +70,7 @@
                         ?>
                     </article>
                     <?php
-                    $dateCreated = date("F j, Y", strtotime($row["Date"]));
+                    $dateCreated = date("F j, Y g:i:s A", strtotime($row["Date"]));
                     echo "<p style='margin-top: 1em; margin-left: 1em; float: left;'>" . $dateCreated . "</p><p style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</p>";
                     ?>
                 </div>
@@ -90,7 +90,7 @@
                                     }
                                     if($isValid) {
                                         date_default_timezone_set("America/Vancouver");
-                                        $date = date("Y-m-d");
+                                        $date = date("Y-m-d g:i:s A");
                                         $sql = "SELECT UserId FROM users WHERE Username = ?";
                                         $statement = mysqli_prepare($connection, $sql);
                                         $statement -> bind_param("s", $username);
@@ -119,7 +119,7 @@
                             $result2 = $statement -> get_result();
                             while($row2 = $result2 -> fetch_assoc()) {
                                 $comment = $row2["Comment"];
-                                $commentDate = date("F j, Y", strtotime($row2["CommentDate"]));
+                                $commentDate = date("F j, Y g:i:s A", strtotime($row2["CommentDate"]));
                                 $userId = $row2["UserId"];
                                 $sql = "SELECT Username FROM users LEFT JOIN comments ON users.UserId = comments.UserId WHERE comments.UserId = ?";
                                 $statement = mysqli_prepare($connection, $sql);
