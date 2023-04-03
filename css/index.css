@@ -152,9 +152,17 @@ footer {
     margin-top: 1em;
 }
 
-#right-sidebar-loggedIn{
+/* #right-sidebar {
+    color: green;
+    position: relative;
+    display: block;
+    height: 30em;
+} */
+
+#right-sidebar-loggedIn {
     display: block;
     float: right;
+    clear: left;
     width: 15em;
     height: 25em;
     margin: 2em 2em 1em 0;
@@ -162,12 +170,12 @@ footer {
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
     background-color: #82C3EC;
-    
 }
 
 #right-sidebar-loggedOut {
     display: block;
     float: right;
+    /* clear: right; */
     width: 15em;
     height: 25em;
     margin: 2em 2em 1em 0;
@@ -175,7 +183,72 @@ footer {
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
     background-color: #82C3EC;
-    
+}
+
+@media only screen and (min-width: 850px) and (max-width: 1050px) { /* should be a hidden sidebar */
+    #right-sidebar-loggedIn {
+        display: block;
+        float: none;
+        clear: left;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 3em;
+    }
+}
+
+@media only screen and (min-width: 670px) and (max-width: 850px) { /* should be a hidden sidebar */
+    #right-sidebar-loggedIn {
+        display: block;
+        float: none;
+        clear: left;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 3em;
+    }
+}
+
+@media only screen and (max-width: 670px) { /* should be a hidden sidebar */
+    #right-sidebar-loggedIn {
+        display: block;
+        float: none;
+        clear: left;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 3em;
+    }
+}
+
+@media only screen and (min-width: 850px) and (max-width: 1050px) { /* should be a hidden sidebar */
+    #right-sidebar-loggedOut {
+        display: block;
+        float: none;
+        clear: left;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 3em;
+    }
+}
+
+@media only screen and (min-width: 670px) and (max-width: 850px) { /* should be a hidden sidebar */
+    #right-sidebar-loggedOut {
+        display: block;
+        float: none;
+        clear: left;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 3em;
+    }
+}
+
+@media only screen and (max-width: 670px) { /* should be a hidden sidebar */
+    #right-sidebar-loggedOut {
+        display: block;
+        float: none;
+        clear: left;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 3em;
+    }
 }
 
 #recent-posts {
@@ -239,18 +312,44 @@ footer {
 }
 
 #posts {
-    display: block;
+    display: inline-block;
     position: relative;
-    float: right;
-    width: 48em;
-    margin-right: 4.8em;
+    width: 42.5em;
+    margin-left: 12.5em;
+}
+
+@media only screen and (min-width: 850px) and (max-width: 1050px) {
+    #posts {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 42.5em;
+    }
+}
+
+@media only screen and (min-width: 670px) and (max-width: 850px) {
+    #posts {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-left: 4.8em;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    #posts {
+        display: block;
+        margin-left: 0;
+        width: 100%;
+    }
 }
 
 #sort {
     cursor: pointer;
     display: block;
     position: relative;
-    float: left;
+    /* float: left; */
     clear: left;
     width: 10em;
     height: 2.5em;
@@ -268,8 +367,8 @@ footer {
 .post-container {
     display: block;
     position: relative;
-    float: left;
-    width: 40em;
+    /* float: left; */
+    /* width: 40em; */
     height: max-content;
     margin-bottom: 5em;
     text-align: unset;
@@ -289,6 +388,10 @@ footer {
     margin-top: 1em;
     margin-left: 2em;
     font-size: 24px;
+}
+
+#threadsBox a:-webkit-any-link {
+    text-decoration: none !important;
 }
 
 .post-profile-image {
@@ -315,6 +418,23 @@ footer {
 
 .post-content img, .post-content video {
     width: 100%;
+}
+
+.date {
+    position: relative;
+    /* float: left; */
+    margin-top: 2em;
+    /* margin-left: 1em; */
+}
+
+.likes {
+    /* position: absolute; */
+    position: relative;
+    /* float: right; */
+    /* clear: left; */
+    /* right: 3em; */
+    margin-top: 1em;
+    /* margin-right: 2em; */
 }
 
 #login-button{
