@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>READ-IT - Post</title>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/post.css">
     <?php 
         include "connection.php";
@@ -52,7 +52,7 @@
 
         <div id="main">
             <div id="post">
-                <div class="post-container"> <!-- example post -->
+                <div class="container-md post-container " > <!-- example post -->
                     <article class="post-content">
                         <?php
                             $sql = "SELECT * FROM threads WHERE ThreadId = ?";
