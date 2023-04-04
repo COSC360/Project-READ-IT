@@ -21,7 +21,9 @@
 
     <body>
         <header id="masthead">
-        <input class="form-control mr-sm-2" id="search" type="search" placeholder="Search" aria-label="Search">
+        <form method="GET" action="search.php" style="display: block; line-height: 5em;">
+            <input class="form-control mr-sm-2" id="search" type="search" name="search" placeholder="Search READ-IT..." aria-label="Search" >
+        </form>
 
             <h1><a href="index.php">
                 READ-IT
@@ -58,7 +60,7 @@
         </div>
         <br>
 
-        <form method="POST">
+        <form method="POST" id="thread-form">
             <input type="text" name="title" placeholder="Title">
             <textarea name="text" placeholder="Type text here..." maxlength="1000"></textarea>
             <label for="category" name="category" style="color: #472183; font-weight: bold;">Category: </label>

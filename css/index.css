@@ -63,6 +63,11 @@ footer {
     color: white;
 }
 
+form {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 #search {
     position: relative;
     z-index: 1;

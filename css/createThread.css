@@ -63,6 +63,11 @@ footer {
     color: white;
 }
 
+form {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 #search {
     position: relative;
     z-index: 1;
@@ -169,7 +174,7 @@ footer {
     border: 1px solid #4b56d24d;
 }
 
-form {
+#thread-form {
     display: block;
     position: relative;
     float: none;

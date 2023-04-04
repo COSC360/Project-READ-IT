@@ -22,7 +22,9 @@
                 READ-IT
             </a></h1>
 
-            <input id="search" type="text" placeholder="Search READ-IT...">
+            <form method="GET" action="search.php" style="display: block; line-height: 5em;">
+                <input class="form-control mr-sm-2" id="search" type="search" name="search" placeholder="Search READ-IT..." aria-label="Search" >
+            </form>
 
             <?php
             if(isset($_SESSION["username"])) {
