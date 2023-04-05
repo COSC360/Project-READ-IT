@@ -73,9 +73,12 @@
 </head>
 
 <body>
-    <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
-        <a href="index.php">Home</a> -> <span style="text-decoration: underline;">Sign Up</span>
-    </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Sign Up</li>
+            </ol>
+        </nav>
 
     <div id="SignUpBody">
         <?php

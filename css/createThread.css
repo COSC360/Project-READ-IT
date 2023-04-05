@@ -50,6 +50,14 @@ header a:-webkit-any-link {
     right: 5em;
 }
 
+/* #breadcrumb {
+    color: #472183;
+} */
+
+.breadcrumb {
+    background-color: unset;
+}
+
 footer {
     position: fixed;
     overflow: hidden;

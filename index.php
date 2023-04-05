@@ -70,9 +70,11 @@
             
         </header>
 
-        <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
-            <span style="text-decoration: underline;">Home</span>
-        </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+        </nav>
 
         <div id="main">
 

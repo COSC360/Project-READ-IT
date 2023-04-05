@@ -1,3 +1,12 @@
+
+/* #breadcrumb {
+    color: #472183;
+} */
+
+.breadcrumb {
+    background-color: unset;
+}
+
 #SignUpBody{
     border: solid black 1px; 
     width: 35%; 
