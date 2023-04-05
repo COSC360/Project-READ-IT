@@ -4,6 +4,10 @@
     margin: 0;
 }
 
+ul{
+    list-style: none;
+  }
+
 body {
     position: relative;
     overflow: auto;
@@ -218,6 +222,16 @@ footer {
     border-color: #472183 !important;
 }
 
+.search{
+    display: inline-block;
+    margin-left: 0.5em;
+}
+
+.texfiled{
+    display: inline-block;
+    margin-left: 1.5em;
+}
+
 .btn-outline-light:hover{
     background-color: #472183;
     color:white !important;
@@ -254,3 +268,25 @@ display: block;
     border-color: red !important;
 }
 
+#ThreadTitle{
+    display: inline-block;
+    margin-top: 0.5em;
+    font-size: large;
+}
+#ThreadDate{
+    display: flexbox;
+    float: right;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+}
+
+#deleteThread{
+    display: inline-block;
+    float: right;
+    margin-top: 0.5em;
+}
+
+#inputState{
+    display: block;
+    margin-right: 1.5em ;
+}

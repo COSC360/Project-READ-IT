@@ -18,6 +18,7 @@
         include "session.php";
         include "connection.php";
         global $connection;
+        global $BannedUser; 
         
         if(isset($_SESSION["username"])) {
             echo "User already logged in!";
@@ -34,15 +35,31 @@
                 $username = $_POST["username"];
                 $password = $_POST["password"];
 
-                $sql = "SELECT username FROM users WHERE username = ? AND password = ?";
+                $sql = "SELECT Username, IsBanned, UserId FROM users WHERE username = ? AND password = ?";
                 $statement = mysqli_prepare($connection, $sql);
                 // $password = md5($password);
                 $statement -> bind_param("ss", $username, $password);
                 $statement -> execute();
                 $result = $statement -> get_result();
                 if($row = $result -> fetch_assoc()) {
-                    echo "<p>" . $row["username"] . " successfully logged in</p>";
-                    $_SESSION["username"] = $row["username"];
+                    if($row["IsBanned"] == 1){
+
+                        $sqlBanned = "SELECT * FROM users Join Banned where users.UserId = $row[UserId] AND users.UserId = Banned.UserId";
+                        $statementBanned = mysqli_prepare($connection, $sqlBanned);
+                        $statementBanned -> execute();
+                        $resultBanned = $statementBanned -> get_result();
+                        $rowBanned = $resultBanned -> fetch_assoc();
+                        echo "<h1 style = 'display:flex; justify-content: center;  align-items: center; margin-top: 1em;  margin-bottom: 1em;' >BANNED</h1>";
+                        echo "<p style = 'display:flex; justify-content: center;  align-items: center; margin-top: 1em;  margin-bottom: 1em;'  >Account with username " .$rowBanned["Username"] . "</p>";
+                        echo "<p style = 'display:flex; justify-content: center;  align-items: center; margin-top: 1em;  margin-bottom: 1em;'  >Reason: " .$rowBanned["Reason"] . "</p>";
+                        echo "<p style = 'display:flex; justify-content: center;  align-items: center; margin-top: 1em;  margin-bottom: 1em;'  >Date of Ban: " .$rowBanned["DateBanned"]. "</p>";
+                        
+                        header("Refresh: 10; URL = index.php");
+                       die();
+                      
+                    }else
+                    echo "<p>" . $row["Username"] . " successfully logged in</p>";
+                    $_SESSION["username"] = $row["Username"];
                     header("Refresh: 1; URL = index.php");
                 } else {
                     echo "<p>Invalid username and/or password</p>";
