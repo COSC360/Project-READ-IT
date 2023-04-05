@@ -1,23 +1,28 @@
 <?php 
-//LOCAL PHP MY ADMIN CONNECTION
+
+// LOCAL PHPMYADMIN CONNECTION
 $host = "localhost";
 $username = "root";
 $password = "";
-// $database = "project-read-it";
-$dbname = "phpmyadmin";
+$dbname = "project-read-it";
 
+// SEVER PHPMYADMIN CONNECTION
 
 // $host = "cosc360.ok.ubc.ca";
 // $username = "20489167";
 // $password = "20489167";
 // $dbname = "db_20489167";
-// (NEW PASSOWRD)$password = "newpassword";
+
+// $password = "newpassword"; (NEW PASSWORD NOT WORK)
+
 
 $connection = new mysqli($host, $username, $password, $dbname);
 
 if(mysqli_connect_error()) {
     die("Server error");
 }
+
+
 // try {
 //     $connect ion = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 //     echo "Connected to $dbname at $host successfully.";

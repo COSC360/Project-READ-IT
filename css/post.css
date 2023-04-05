@@ -157,17 +157,34 @@ footer {
     float: left;
     margin-left: 8.5em;
     margin-bottom: 5em;
-    width: 55.5%;
+    width: 42.5em;
+}
+
+@media only screen and (min-width: 670px) and (max-width: 850px) {
+    #post {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    #post {
+        float: none;
+        margin-left: 0;
+        width: unset;
+    }
 }
 
 .post-container {
-    display: inline-block;
+    display: block;
     position: relative;
-    width: 70%;
+    /* width: 70%; */
     height: max-content;
     margin-bottom: 1em;
     text-align: unset;
-    padding: 3em 5em 3em 5em;
+    padding: 3em 5em 5em 5em;
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
     background-color: #82C3EC;
@@ -180,6 +197,7 @@ footer {
     padding-bottom: 1em;
     border-bottom: 1px solid #472183;
     font-size: 24px;
+    font-weight: bold;
 }
 
 .post-content {
@@ -203,9 +221,9 @@ footer {
 #poster-info {
     display: block;
     float: right;
-    width: 23em;
-    height: 20em;
-    margin: 0 2.5em 5em 0;
+    max-width: 25em;
+    height: 22.5em;
+    margin: 0 3.5em 5em 1em;
     padding: 1em 1em 1em 1em;
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
@@ -262,11 +280,11 @@ footer {
 #comment-section {
     display: inline-block;
     position: relative;
-    width: 70%;
     min-height: 10em;
     margin-bottom: 1em;
     text-align: unset;
     padding: 3em 5em 3em 5em;
+    width: 100%;
     /* height: max-content; */
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
@@ -345,7 +363,7 @@ footer {
     margin-bottom: 1em;
     padding: 1em;
     box-sizing: border-box;
-    border: 1px solid #4B56D2;
+    /* border: 1px solid #4B56D2; */
     border-radius: 0.75em;
     background-color: white;
     color: #472183;
