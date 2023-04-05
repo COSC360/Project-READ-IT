@@ -19,10 +19,12 @@
         if(!isset($_SESSION["username"])){   
           header("Refresh: 0; URL = login.php"); 
       }
+
+    ?>
     
 
 
-    ?>
+
   </head>
 
   <body>
@@ -87,10 +89,34 @@
 
 
         </header>
+        <?php 
+        if(isset($_POST['DeleteThread'])){
+          $ThreadId = $_POST['DeleteThread'];
+      //Delete threadId from table Threads
+                  $sqlDelete = "DELETE FROM threads WHERE ThreadId = ?";
+                  $statementD = mysqli_prepare($connection, $sqlDelete);
+                  mysqli_stmt_bind_param($statementD, 'i', $ThreadId);
+                  mysqli_stmt_execute($statementD);
+                  mysqli_stmt_close($statementD);
+              $success = "Thread has been Deleted";
 
-        <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
-            <a href="index.php">Home</a> -> <span style="text-decoration: underline;">Profile</span>
-        </div>
+  }
+              if (!empty($success)) {
+                  ?>
+                      <div class="alert alert-success" style="position:flex;">
+                      <strong>Success!</strong>
+                      <?= $success ?>
+                      </div>
+
+                  <?php
+              }
+
+        ?>
+
+        <ol class="breadcrumb" style="background: transparent; !important;">
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item active">Profile</li>
+        </ol>
 
         <div id="main">
             <div id="post">
@@ -99,37 +125,55 @@
                         <a class="navbar-brand" href="#">MyPosts</a>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                           <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                              <a class="nav-link" href="#">Recent <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">Oldest</a>
-                            </li>
-                          </ul>
-                          <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                          </form>
+                          <form>
+                            <select id="inputState" class="form-control">
+                              <option selected>Recent</option>
+                              <option>Oldest</option>
+                              <option>Popular</option>
+                           </select>
+                           </form>
+                            <form class="form-inline">
+                            <input class="form-control texfiled" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-light search" type="submit">Search</button>
+                            </form>
+                      
                         </div>
                       </nav>
                 </div>
 
                 <div id="Posts-By-User">
                 <ul class="list-group">
-                    <li id = "title-groups" class="list-group-item disabled"><?php echo  $username ?> Posts: </li>
-                    <li class="list-group-item list-group-item-action">Number of Users: 50</li>
-                    <!-- <?php 
+                    <li id = "title-groups" class="list-group-item disabled " style= "background-color: #472183; color: white;"><?php echo  $username ?> Posts: </li>
+                    
+                     <?php 
+                     //getID
+                        $sqlUID = "SELECT UserId FROM users WHERE username = '$username'";
+                        $statementUID = mysqli_prepare($connection, $sqlUID);
+                        $statementUID -> execute();
+                        $resultUID = $statementUID -> get_result();
+                        $rowUID = $resultUID -> fetch_assoc();
+                        $UID = $rowUID['UserId'];
 
-                    // $sql = "SELECT Title Date FROM threads WHERE user_id = (SELECT id FROM users WHERE username = '$username')";
-                    // $statement = mysqli_prepare($connection, $sql);
-                    // $statement -> execute();
-                    // $result = $statement -> get_result();
-                    // while($row = $result -> fetch_assoc()) {
-                    //     $count ++;
-                    //     echo  "<li class='list-group-item list-group-item-action'> TITLE: ".$row['Title']. "Date Created". $row['Date'] ."</li>";
-                    // }   
+                        //get threads
+                        $sql = "SELECT * FROM threads where threads.UserId = $UID ";
+                        $statement = mysqli_prepare($connection, $sql);
+                        $statement -> execute();
+                        $result = $statement -> get_result();
 
-                    ?> -->
+                        if($result -> num_rows == 0){
+                            echo  "<li class='list-group-item list-group-item-action'> No Threads Made </li>";
+                        }else {
+                            $count =0; 
+                            while($row = $result -> fetch_assoc()) {
+                                $count++;
+                                echo  "<a href='post.php?post=" . $row['ThreadId'] . "' style = 'margin-bottom: 0; color: none;'><ul class='list-group-item list-group-item-action' > <li id= 'ThreadTitle'>" . $row['Title'] ."</li> <li id= 'ThreadDate'>". $row['Date']. "</li> <li> Likes: " . $row['Likes'] ." <form method ='post' name ='UnbanUser' style = 'display: block'> <button class='btn btn-danger btn-sm '  id = 'deleteThread' name ='DeleteThread' type = 'submit'  value ='".$row['ThreadId']."'>Delete </button> </form></li><li style = 'visibility: hidden'>PlaceHoder </li><li style = 'visibility: hidden'>PlaceHoder </li> </ul></a>"; 
+                            }   
+                        } 
+
+                    ?>
+                    
+                   
+                   
 
                     
                 </ul>
