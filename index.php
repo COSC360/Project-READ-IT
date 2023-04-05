@@ -33,20 +33,6 @@
         // } else {
         //     // echo "<p>HELLO GUEST</p>";
         // }
-
-
-        if(isset($_POST["search"])) {
-            $search = $_POST["search"];
-            $sql = "SELECT * FROM threads WHERE Title LIKE ? OR Text LIKE ?";
-            $statement = mysqli_prepare($connection, $sql);
-            $statement -> bind_param("s", $search);
-            $statement -> execute();
-            $result = $statement -> get_result();
-            if($row = $result -> fetch_assoc()) {
-                echo $row["Title"];
-            }
-        }
-
     ?>
   </head>
 
@@ -57,9 +43,9 @@
                 READ-IT
             </a></h1>
 
-            <!-- <form id="search-form" style="display: block; line-height: 5em;"> -->
-            <input class="form-control mr-sm-2" id="search" type="search" placeholder="Search" aria-label="Search" >
-            <!-- </form> -->
+            <form method="GET" action="search.php" style="display: block; line-height: 5em;">
+                <input class="form-control mr-sm-2" id="search" type="search" name="search" placeholder="Search READ-IT..." aria-label="Search" >
+            </form>
 
             <?php
             if(isset($_SESSION["username"])) {
@@ -84,9 +70,11 @@
             
         </header>
 
-        <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
-            <span style="text-decoration: underline;">Home</span>
-        </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+        </nav>
 
         <div id="main">
 

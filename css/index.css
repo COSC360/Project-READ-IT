@@ -63,6 +63,11 @@ footer {
     color: white;
 }
 
+form {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 #search {
     position: relative;
     z-index: 1;
@@ -150,6 +155,14 @@ footer {
 #main {
     height: min-content;
     margin-top: 1em;
+}
+
+/* #breadcrumb {
+    color: #472183;
+} */
+
+.breadcrumb {
+    background-color: unset;
 }
 
 /* #right-sidebar {
@@ -358,6 +371,7 @@ footer {
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
     background-color: #82C3EC;
+    color: white;
 }
 
 #sort:hover {
@@ -386,7 +400,8 @@ footer {
 
 .post-container h3 {
     margin-top: 1em;
-    margin-left: 2em;
+    /* margin-left: 2em; */
+    margin-bottom: 1em;
     font-size: 24px;
 }
 

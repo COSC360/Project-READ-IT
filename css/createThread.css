@@ -50,6 +50,14 @@ header a:-webkit-any-link {
     right: 5em;
 }
 
+/* #breadcrumb {
+    color: #472183;
+} */
+
+.breadcrumb {
+    background-color: unset;
+}
+
 footer {
     position: fixed;
     overflow: hidden;
@@ -61,6 +69,11 @@ footer {
     text-align: center;
     background-color: #472183;
     color: white;
+}
+
+form {
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #search {
@@ -169,7 +182,7 @@ footer {
     border: 1px solid #4b56d24d;
 }
 
-form {
+#thread-form {
     display: block;
     position: relative;
     float: none;

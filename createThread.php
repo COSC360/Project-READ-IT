@@ -21,7 +21,9 @@
 
     <body>
         <header id="masthead">
-        <input class="form-control mr-sm-2" id="search" type="search" placeholder="Search" aria-label="Search">
+        <form method="GET" action="search.php" style="display: block; line-height: 5em;">
+            <input class="form-control mr-sm-2" id="search" type="search" name="search" placeholder="Search READ-IT..." aria-label="Search" >
+        </form>
 
             <h1><a href="index.php">
                 READ-IT
@@ -48,9 +50,12 @@
             ?>
         </header>
 
-        <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
-            <a href="index.php">Home</a> -> <span style="text-decoration: underline;">Create Thread</span>
-        </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Create Thread</li>
+            </ol>
+        </nav>
 
         <br>
         <div id="new-thread-title">
@@ -58,7 +63,7 @@
         </div>
         <br>
 
-        <form method="POST">
+        <form method="POST" id="thread-form">
             <input type="text" name="title" placeholder="Title">
             <textarea name="text" placeholder="Type text here..." maxlength="1000"></textarea>
             <label for="category" name="category" style="color: #472183; font-weight: bold;">Category: </label>

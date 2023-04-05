@@ -22,7 +22,9 @@
                 READ-IT
             </a></h1>
 
-            <input id="search" type="text" placeholder="Search READ-IT...">
+            <form method="GET" action="search.php" style="display: block; line-height: 5em;">
+                <input class="form-control mr-sm-2" id="search" type="search" name="search" placeholder="Search READ-IT..." aria-label="Search" >
+            </form>
 
             <?php
             if(isset($_SESSION["username"])) {
@@ -46,9 +48,16 @@
             ?>
         </header>
 
-        <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
+        <!-- <div id="breadcrumb" style="margin-top: 1em; margin-left: 1em;">
             <a href="index.php">Home</a> -> <span style="text-decoration: underline;">Post</span>
-        </div>
+        </div> -->
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Post</li>
+            </ol>
+        </nav>
 
         <div id="main">
             <div id="post">
@@ -71,7 +80,9 @@
                     </article>
                     <?php
                     $dateCreated = date("F j, Y g:i:s A", strtotime($row["Date"]));
-                    echo "<p style='margin-top: 1em; margin-left: 1em; float: left;'>" . $dateCreated . "</p><p style='float: right; margin-top: 1em; margin-right: 2em;'>" . $row["Likes"] . " Likes</p>";
+                    echo "
+                    <div class='date'>" . $dateCreated . "</div>
+                    <div class='likes'>" . $row["Likes"] . " Likes</div>";
                     ?>
                 </div>
 

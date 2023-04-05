@@ -62,6 +62,11 @@ footer {
     color: white;
 }
 
+form {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 #search {
     position: relative;
     z-index: 1;
@@ -151,6 +156,14 @@ footer {
     margin-top: 1em;
 }
 
+/* #breadcrumb {
+    color: #472183;
+} */
+
+.breadcrumb {
+    background-color: unset;
+}
+
 #post {
     display: block;
     position: relative;
@@ -182,9 +195,9 @@ footer {
     position: relative;
     /* width: 70%; */
     height: max-content;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     text-align: unset;
-    padding: 3em 5em 5em 5em;
+    padding: 4em 5em 4em 5em;
     border: 1px solid #4B56D2;
     border-radius: 0.75em;
     background-color: #82C3EC;
@@ -401,4 +414,14 @@ footer {
     min-height: 1em;
     margin-left: 1.5em;
     border-left: 1px solid #4B56D2;
+}
+
+.date {
+    position: relative;
+    margin-top: 2em;
+}
+
+.likes {
+    position: relative;
+    margin-top: 1em;
 }
