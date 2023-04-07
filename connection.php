@@ -1,18 +1,18 @@
 <?php 
 
 // LOCAL PHPMYADMIN CONNECTION
-$host = "localhost";
-$username = "root";
-$password = "";
-// $dbname = "project-read-it";
-$dbname = "test";
+// $host = "localhost";
+// $username = "root";
+// $password = "";
+// // $dbname = "project-read-it";
+// $dbname = "test";
 
 // SEVER PHPMYADMIN CONNECTION
 
-// $host = "cosc360.ok.ubc.ca";
-// $username = "20489167";
-// $password = "20489167";
-// $dbname = "db_20489167";
+$host = "cosc360.ok.ubc.ca";
+$username = "20489167";
+$password = "20489167";
+$dbname = "db_20489167";
 
 // $password = "newpassword"; (NEW PASSWORD NOT WORK)
 
