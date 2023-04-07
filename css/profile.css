@@ -153,7 +153,7 @@ footer {
     display: block;
     position: relative;
     /* height: max-content; */
-    background-color: #82C3EC;
+
 }
 
 
@@ -279,11 +279,25 @@ display: block;
     margin-top: 0.5em;
     margin-left: 0.5em;
 }
-
+#deleteT{
+    display: inline-block;
+    float:right;
+    margin-left: 0.5em;
+}
 #deleteThread{
     display: inline-block;
+    float:right;
+    margin-left: 0.5em;
+}
+
+#Delete1{
+    display: flex;
     float: right;
-    margin-top: 0.5em;
+}
+
+#cancel
+{
+    display: inline-block;
 }
 
 #inputState{

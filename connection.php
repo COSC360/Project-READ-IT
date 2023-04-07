@@ -4,7 +4,8 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$dbname = "project-read-it";
+// $dbname = "project-read-it";
+$dbname = "test";
 
 // SEVER PHPMYADMIN CONNECTION
 
