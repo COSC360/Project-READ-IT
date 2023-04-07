@@ -28,6 +28,13 @@ margin-left: auto;
     border-color: #472183 !important;
     color: white !important;
 }
+#title-groups-ex{
+    font-size: 20px;
+    display: inline-block;
+    background-color: #472183 !important;
+    border-color: #472183 !important;
+    color: white !important;
+}
 
 #title-groups{
     font-size: 20px;
@@ -65,3 +72,9 @@ width: 7em;
     background-color: #472183!important;
     border-color: #472183!important;
     }
+    
+.search{
+    background-color: #472183;
+    color:white !important;
+    border-color: #472183 !important;
+}

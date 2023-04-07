@@ -30,10 +30,11 @@
                 die("Bad data");
                 header("Refresh: 0; URL = index.php");
             }
+
     
             if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $username = $_POST["username"];
-                $password = $_POST["password"];
+                $password = md5($_POST["password"]);
 
                 $sql = "SELECT Username, IsBanned, UserId FROM users WHERE username = ? AND password = ?";
                 $statement = mysqli_prepare($connection, $sql);
@@ -60,8 +61,13 @@
                     }else
                     echo "<p>" . $row["Username"] . " successfully logged in</p>";
                     $_SESSION["username"] = $row["Username"];
+                    $LastLoggedIn = "UPDATE users SET LastOnline = NOW() WHERE Username = ? AND Password = ?";
+                    $statementLastLoggedIn = mysqli_prepare($connection, $LastLoggedIn);
+                    $statementLastLoggedIn -> bind_param("ss", $username, $password);
+                    $statementLastLoggedIn -> execute();
                     header("Refresh: 1; URL = index.php");
                 } else {
+
                     echo "<p>Invalid username and/or password</p>";
                     header("Refresh: 1; URL = Login.php");
                 }
@@ -72,6 +78,11 @@
         } else {
             // echo "<p>NO CREDENTIALS</p>";
         }
+
+
+
+
+
     ?>
 
 

@@ -243,6 +243,12 @@ form {
     background-color: #82C3EC;
 }
 
+#delete-post{
+    margin-top: 0.5em;
+    display: flex;
+    float: right;
+}
+
 #poster-profile {
     display: block;
     position: relative;

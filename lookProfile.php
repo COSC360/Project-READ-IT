@@ -19,16 +19,16 @@
         if(!isset($_SESSION["username"])){   
           header("Refresh: 0; URL = login.php"); 
       }
-
-      function checkSession(){
-        if(!isset($_SESSION["username"])){ 
-          return "Not In session";
-        }else{
-          return "InSession";
-        }  
-    }
-
-
+      $usernameID = $_SESSION["username"];
+      $sql = "SELECT IsAdmin FROM users WHERE username = '$usernameID'";
+        $statementAdmin = mysqli_prepare($connection, $sql);
+        $statementAdmin -> execute();
+        $resultAdmin = $statementAdmin -> get_result();
+        $rowAdmin = $resultAdmin -> fetch_assoc();
+        $isadmin = $rowAdmin["IsAdmin"];
+        if($isadmin == 0){
+          header("Refresh: 0; URL = index.php"); 
+        }
 
     ?>
     
@@ -39,18 +39,19 @@
 
   <body>
     <?php
-              // get the date created
-              $username = $_SESSION["username"];
-              $sql = "SELECT * FROM users WHERE username = ?";
-              $statement = mysqli_prepare($connection, $sql);
-              $statement -> bind_param("s", $username);
-              $statement -> execute();
-              $result = $statement -> get_result();
-              $row = $result -> fetch_assoc();
-              $date_created = date("F j, Y", strtotime($row["DateCreated"]));
-              $about_me = $row["Description"];
-              $isadmin = $row["IsAdmin"];
-              $last_login = date("F j, Y", strtotime($row["LastOnline"]));
+    // get the date created
+        
+            $username = $_GET["profile"];
+            $sql = "SELECT * FROM users WHERE username = ?";
+            $statement = mysqli_prepare($connection, $sql);
+            $statement -> bind_param("s", $username);
+            $statement -> execute();
+            $result = $statement -> get_result();
+            $row = $result -> fetch_assoc();
+            $date_created = date("F j, Y", strtotime($row["DateCreated"]));
+            $about_me = $row["Description"];
+            $isadmin = $row["IsAdmin"];
+            $last_login = date("F j, Y", strtotime($row["LastOnline"]));
 
             ?>
             <?php
@@ -97,7 +98,7 @@
                   mysqli_stmt_bind_param($statementD, 'i', $ThreadId);
                   mysqli_stmt_execute($statementD);
                   mysqli_stmt_close($statementD);
-              $success = "Thread has been Deleted";
+                $success = "Thread has been Deleted";
 
   }
               if (!empty($success)) {

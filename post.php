@@ -13,6 +13,45 @@
         include "session.php";
         $threadId = $_GET["post"];
         global $connection;
+        
+         
+
+            $usernameID = $_SESSION["username"];
+            $sql = "SELECT IsAdmin FROM users WHERE username = '$usernameID'";
+              $statementAdmin = mysqli_prepare($connection, $sql);
+              $statementAdmin -> execute();
+              $resultAdmin = $statementAdmin -> get_result();
+              $rowAdmin = $resultAdmin -> fetch_assoc();
+              $isadmin = $rowAdmin["IsAdmin"];
+              if($isadmin == 0){
+                $ISUSERADMIN = false;
+              }else {
+                $ISUSERADMIN = true;
+              }
+            
+       
+
+    ?>
+
+    <?php
+        if(isset($_POST['DeletePost'])){
+        $sqlDeletePost = "DELETE FROM threads WHERE threadId = ?";
+        $statementuB = mysqli_prepare($connection, $sqlDeletePost);
+        mysqli_stmt_bind_param($statementuB, 'i', $threadId);
+        mysqli_stmt_execute($statementuB);
+        mysqli_stmt_close($statementuB);
+        header("Refresh: 0;index.php");
+        }
+
+    if(isset($_POST['DeletComment'])){
+        $comId = $_POST['DeletComment'];
+        $sqlDeleteBanned = "DELETE FROM comments WHERE CommentId = ?";
+        $statementuB = mysqli_prepare($connection, $sqlDeleteBanned);
+        mysqli_stmt_bind_param($statementuB, 'i', $comId);
+        mysqli_stmt_execute($statementuB);
+        mysqli_stmt_close($statementuB);
+        echo $_POST['DeletComment'];
+        }
     ?>
   </head>
 
@@ -132,13 +171,16 @@
                                 $comment = $row2["Comment"];
                                 $commentDate = date("F j, Y g:i:s A", strtotime($row2["CommentDate"]));
                                 $userId = $row2["UserId"];
-                                $sql = "SELECT Username FROM users LEFT JOIN comments ON users.UserId = comments.UserId WHERE comments.UserId = ?";
+                                $sql = "SELECT Username, comments.CommentId AS comID FROM users LEFT JOIN comments ON users.UserId = comments.UserId WHERE comments.UserId = ?";
                                 $statement = mysqli_prepare($connection, $sql);
                                 $statement -> bind_param("i", $userId);
                                 $statement -> execute();
                                 $result3 = $statement -> get_result();
                                 if($row3 = $result3 -> fetch_assoc()) {
-                                    echo "<div class='comment'><p class='comment-username' style='border: none; margin-bottom: 0; padding: 0; padding-left: 1em; padding-bottom: 0.25em; background-color: unset; color: #472183'>" . $row3["Username"] . "<br>" . $commentDate . "</p><p>" . $comment . "</p></div>";
+                                     if($ISUSERADMIN){
+                                        echo "<div class='comment'><p class='comment-username' style='border: none; margin-bottom: 0; padding: 0; padding-left: 1em; padding-bottom: 0.25em; background-color: unset; color: #472183'>" . $row3["Username"] . "<br>" . $commentDate . "</p><p>" . $comment . "</p><form method= 'POST'> <button class='btn btn-danger btn-sm' id= 'delete-post' name ='DeletComment' type = 'submit' value ='".$row3['comID']."'>Delete Comment </button></form></div>";
+                                        }else
+                                         echo "<div class='comment'><p class='comment-username' style='border: none; margin-bottom: 0; padding: 0; padding-left: 1em; padding-bottom: 0.25em; background-color: unset; color: #472183'>" . $row3["Username"] . "<br>" . $commentDate . "</p><p>" . $comment . "</p></div>";
                                 }
                             }
                         ?>
@@ -179,8 +221,8 @@
                                 // echo "<div id='poster-profile-image'><a href='#'> <!-- link to poster's profile page --><img src='" . $row["Image"] . "'></a></div>";
                             }
                             echo "<a href='#' id='poster-username'>" . $row4["Username"] . "</a>";
-                        
                     ?>
+
                 </section>
                 <section id="poster-description">
                     <b>Description</b><br>
@@ -193,12 +235,29 @@
                     <b>Account created:</b><br>
                     <!-- July 17, 2023 -->
                     <?php
-                            echo date("F j, Y", strtotime($row4["DateCreated"]));
+                            echo date("F j, Y", strtotime($row4["DateCreated"]))."<br>";
                         }
                     ?>
+                    <b style = "">Last Online:</b><br>
+                    <?php
+                            echo date("F j, Y", strtotime($row4["LastOnline"]));
+                        
+                    ?>
                 </section>
+                <div id= "delete-post">
+
+                        <?php  if($ISUSERADMIN){
+                        echo"<form method='POST'> <button class='btn btn-danger btn-lg' id= 'delete-post' name ='DeletePost' type = 'submit' value ='".$threadId."'>Delete Post </button></form>"; 
+                        }
+                        ?>
+
+                </div>
+               
             </div>
-        </div>
+                
+            </div>
+           
+            
 
         <footer>
             <span>&copy; COSC 360 - Project READ-IT</span>

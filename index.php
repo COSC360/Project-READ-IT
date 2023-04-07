@@ -18,6 +18,10 @@
         include "session.php";
 
         global $connection;
+        $lastThreePosts = array();
+
+
+
 
         // if(isset($_SESSION["username"])) {
         //     $username = $_SESSION["username"];
@@ -84,11 +88,13 @@
             <nav id="right-sidebar-loggedIn"> <!-- recently viewed posts and create post button -->
                 <div id="recent-posts">
                     <p>Recent</p>
-                    <ul>
-                        <li><a href="#">Recent Post 1</a></li>
-                        <li><a href="#">Recent Post 2</a></li>
-                        <li><a href="#">Recent Post 3</a></li>
-                    </ul>
+
+                  <?php
+                    echo "<ul>
+                        <li><a href='post.php?post=" .$lastThreePosts[0] ."'> Recent Post 1</a></li>
+                        <li><a href='post.php?post=".$lastThreePosts[1] ."'> Recent Post 2</a></li>
+                        <li><a href='post.php?post=" .$lastThreePosts[2]. "'> Recent Post 3</a></li> </ul>";
+                    ?>
                 </div>
                 
                 <div id="create-post">
