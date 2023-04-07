@@ -57,11 +57,9 @@
             </ol>
         </nav>
 
-        <br>
         <div id="new-thread-title">
             New Thread
         </div>
-        <br>
 
         <form method="POST" id="thread-form">
             <input type="text" name="title" placeholder="Title">
