@@ -157,6 +157,7 @@ form {
 #new-thread-title {
     display: block;
     position: relative;
+    margin-bottom: 0.125em;
     text-align: center;
     font-size: 24px;
     color: #472183;

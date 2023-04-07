@@ -176,9 +176,13 @@
                     echo "<a href='post.php?post=" . $row['ThreadId'] . "'>
                     <div class='post-container'><h3>" . $row["Title"] . "</h3>
                     <article class='post-content'>" . $row["Text"] . "</article>
-                    <div class='date'>" . $date . "</div>
-                    <div class='likes'>" . $row["Likes"] . " Likes</div></div></a>";
-                    // echo "<a href='post.php'><div class='post-container'><div class='post-profile-image'><a href='#'><img src=''></a></div><h3>" . $row["Title"] . "</h3><article class='post-content'></article></div></a>";
+                    <div class='date'>" . $date . "</div>";                   
+                    if($row["Likes"] == 1) {
+                        echo "<div class='likes'>" . $row["Likes"] . " Like</div></div></a>";
+                    }
+                    else {
+                        echo "<div class='likes'>" . $row["Likes"] . " Likes</div></div></a>";
+                    }
                 }
                 if($numPosts == 0) {
                     echo "<div style='margin-top: 5em;'><p>No posts!</p></div>";
@@ -192,51 +196,27 @@
                 $result = $statement -> get_result();
                 $numPosts = 0;
                 while($row = $result -> fetch_assoc()) {
-                   $numPosts++;
-                   $date = date("F j, Y g:i:s A", strtotime($row["Date"]));
-                    echo "<a href='post.php?post=" . $row['ThreadId'] . "'>
+                    $threadId = $row["ThreadId"];
+                    $numPosts++;
+                    $date = date("F j, Y g:i:s A", strtotime($row["Date"]));
+                    echo "<a href='post.php?post=" . $row["ThreadId"] . "'>
                     <div class='post-container'><h3>" . $row["Title"] . "</h3>
                     <article class='post-content'>" . $row["Text"] . "</article>
-                    <div class='date'>" . $date . "</div>
-                    <div class='likes'>" . $row["Likes"] . " Likes</div></div></a>";
+                    <div class='date'>" . $date . "</div>";
+                    if($row["Likes"] == 1) {
+                        echo "<div class='likes'>" . $row["Likes"] . " Like</div></div></a>";
+                    }
+                    else {
+                        echo "<div class='likes'>" . $row["Likes"] . " Likes</div></div></a>";
+                    }
                 }
                 if($numPosts == 0) {
                     echo "<div style='margin-top: 5em;'>No posts!</div>";
                 }
 
             }
-
-                // <div class="post-container"> 
-                //     <div class="post-profile-image">
-                //         <a href="#"> // link to user profile page
-                //             <img src=""> 
-                //         </a>
-                //     </div>
-
-                //     <h3>Post Title</h3>
-
-                //     <article class="post-content">
-                //         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at velit nec nisl feugiat convallis id at neque. Maecenas convallis eleifend nisl, at ultricies tellus bibendum ac. Morbi in eros efficitur, efficitur sapien a, egestas mauris. Proin eu diam a mauris egestas iaculis sed sit amet urna. In sit amet ultrices lacus, at accumsan massa. Sed sed commodo justo, sed fermentum sapien. Phasellus venenatis tempor arcu a faucibus. Suspendisse quam sem, maximus ut quam ac, cursus lobortis elit. Mauris feugiat lacus eu efficitur dapibus. Morbi aliquet ligula vestibulum mi commodo, sit amet interdum ipsum dignissim.
-                //     </article>
-                // </div>
             ?>
             </div>
-
-            
-            <!-- <a href="post.php">
-                <div class="post-container">
-                    <h3>Post Title</h3>
-                     <article class="post-content">
-                        <img src="images/166.jpg">
-                        orem ipsum dolor sit amet, consectetur adipiscing elit. Nam at velit nec nisl feugiat convallis id at neque. Maecenas convallis eleifend nisl, at ultricies tellus bibendum ac. Morbi in eros efficitur, efficitur sapien a, egestas mauris
-                    </article>
-                     <div class="post-profile-image" style="display: flex;">
-                        <a href="#">
-                            <img src="">
-                        </a>
-                    </div>
-                </div>
-            </a> -->
 
             </div>
         </div>
@@ -267,7 +247,7 @@
                     // handle errors here
                     console.log("Error: " + textStatus + ": " + errorThrown);
                 }
-                });
+            });
         }, 1000)
 
         const threadsElement = function(item){
@@ -285,6 +265,6 @@
             return html;
         }
 
-    </script>
+        </script>
       </body>
 </html>

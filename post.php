@@ -120,8 +120,14 @@
                     <?php
                     $dateCreated = date("F j, Y g:i:s A", strtotime($row["Date"]));
                     echo "
-                    <div class='date'>" . $dateCreated . "</div>
-                    <div class='likes'>" . $row["Likes"] . " Likes</div>";
+                    <div class='date'>" . $dateCreated . "</div>";
+                    if($row["Likes"] == 1) {
+                        echo "<div class='likes'>" . $row["Likes"] . " Like</div>";
+                    }
+                    else {
+                        echo "<div class='likes'>" . $row["Likes"] . " Likes</div>";
+                    }
+
                     ?>
                 </div>
 
