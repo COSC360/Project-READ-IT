@@ -7,7 +7,7 @@
 // // $dbname = "project-read-it";
 // $dbname = "test";
 
-// SEVER PHPMYADMIN CONNECTION
+// SERVER PHPMYADMIN CONNECTION
 
 $host = "cosc360.ok.ubc.ca";
 $username = "20489167";
